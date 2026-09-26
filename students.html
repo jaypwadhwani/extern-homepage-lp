@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Students · The flexible way to get professional experience · Extern</title>
+<meta name="description" content="Build your resume through real world projects while building a network that lasts. Real companies, real projects, real connections. Sign up, $0 to start.">
+<link rel="icon" href="assets/extern_mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<style>
+/* students.html page styles. Kit classes come from kit.css; everything below is page-specific. */
+
+/* hero tweaks: the students h1 is longer than the homepage's */
+.heroCopy h1{font-size:clamp(42px,5.6vw,84px)}
+.heroCopy .eyebrow{color:rgba(255,255,255,.6)}
+.heroArt .photo img{object-position:60% 40%}
+
+/* tags (used by the live cards; not defined in kit.css) */
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;letter-spacing:.02em;border:1px solid var(--line2);border-radius:999px;padding:5px 11px;color:var(--ink2);background:var(--paper);white-space:nowrap}
+.tag.live{background:var(--green-soft);color:var(--green-tx);border-color:transparent}
+.tag.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+
+/* value props: inside the hero column at desktop, a cream band under the photo on phones */
+.hprops{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;max-width:600px}
+.hprops div{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.hprops .ic{width:34px;height:34px;border-radius:50%;background:rgba(24,221,76,.16);color:var(--green);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.hprops .ic svg{width:17px;height:17px}
+.hprops p{min-width:0}
+.hprops b{display:block;font-size:14.5px;font-weight:600;line-height:1.3}
+.hprops p span{display:block;font-size:13px;color:rgba(255,255,255,.72);line-height:1.45;margin-top:3px}
+.props{display:none;padding:56px 0 0}
+.propgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.prop{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:14px}
+.prop .ic{width:44px;height:44px;border-radius:50%;background:var(--green-soft);color:var(--green-tx);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.prop .ic svg{width:22px;height:22px}
+.prop h3{font-size:19px;font-weight:600;line-height:1.25}
+.prop p{font-size:15px;color:var(--ink2);line-height:1.5}
+
+/* three paths */
+.paths{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.paths .head{max-width:820px;margin-bottom:48px}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pth{background:var(--cream);border-radius:var(--r);padding:34px 30px;display:flex;flex-direction:column;gap:14px;min-height:280px;transition:transform .2s,box-shadow .2s}
+.pth:hover{transform:translateY(-3px);box-shadow:0 22px 40px -24px rgba(15,26,32,.28)}
+.pth h3{font-size:clamp(28px,2.4vw,36px);line-height:1.05;text-wrap:balance}
+.pth p{color:var(--ink2);font-size:16.5px;line-height:1.55}
+.pth .more{margin-top:auto;font-weight:600;font-size:15px;display:inline-flex;gap:8px;align-items:center;color:var(--ink)}
+.pth .more svg{width:16px;height:16px;transition:transform .15s}
+.pth:hover .more svg{transform:translateX(4px)}
+
+/* the stat band */
+.stat{background:var(--deep);color:#fff}
+.stat .split{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:center}
+.stat .eyebrow{color:rgba(255,255,255,.6)}
+.stat .big{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(112px,14vw,210px);line-height:.86;letter-spacing:-.035em;margin-top:6px}
+.stat .lab{font-size:clamp(19px,1.7vw,25px);line-height:1.35;color:rgba(255,255,255,.88);max-width:380px;text-wrap:balance}
+.stat h2{font-size:clamp(30px,3vw,44px);color:#fff}
+.stat .cloud{display:flex;flex-wrap:wrap;gap:10px}
+.stat .cloud span{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:9px 14px;font-size:14.5px;color:rgba(255,255,255,.88);background:rgba(255,255,255,.04)}
+.stat .cloud span b{color:#fff;font-weight:600}
+.stat .fine{color:rgba(255,255,255,.55)}
+
+/* testimonials: initial avatars for people without a face file */
+.av{width:56px;height:56px;border-radius:50%;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-family:"Instrument Serif",Georgia,serif;font-size:27px;line-height:1;background:var(--deep);color:#fff}
+.av.g{background:var(--green-soft);color:var(--green-tx)}
+.av.l{background:var(--lav);color:var(--blue)}
+.av.p{background:var(--peach);color:var(--ink)}
+
+/* how it works, five steps */
+.hiw .head{max-width:760px;margin-bottom:56px}
+.g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px}
+.g5 .step h3{font-size:20px}
+
+/* host companies + live cards */
+.hosts{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hostgrid{list-style:none;margin:44px auto 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:30px 48px;max-width:1140px}
+.hostgrid img{height:32px;width:auto;max-width:160px;object-fit:contain;opacity:.72;filter:grayscale(1) contrast(1.1);mix-blend-mode:multiply;transition:opacity .15s,filter .15s}
+.hostgrid img.dk{filter:grayscale(1) brightness(.55) contrast(1.2)}
+.hostgrid img.tall{height:42px}
+.hostgrid li:hover img{opacity:1;filter:none}
+.hosts .feat{padding:0;margin-top:88px;border-top:1px solid var(--line);padding-top:64px}
+
+/* newsletter band */
+.news{background:var(--green-soft);padding:44px 0}
+.news .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.news h3{font-size:clamp(26px,2.4vw,34px);line-height:1.1}
+.news p{color:var(--ink2);font-size:16px;margin-top:6px;max-width:560px}
+.news .btn.ghost{border-color:var(--green-tx);color:var(--green-tx)}
+.news .btn.ghost:hover{background:rgba(11,116,49,.08)}
+
+@media (max-width:1200px){
+  .g5{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:1100px){
+  .hprops{grid-template-columns:1fr;gap:8px}
+  .hprops div{padding:10px 14px;align-items:center}
+  .hprops p span{margin-top:1px}
+}
+@media (max-width:1024px){
+  .propgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pgrid{grid-template-columns:1fr}
+  .pth{min-height:0}
+}
+@media (max-width:860px){
+  .hprops{display:none}
+  .props{display:block;padding-top:40px}
+  .stat .split{grid-template-columns:1fr;gap:40px}
+  .stat .stack>*{max-width:100%}
+  .stat .cloud{align-self:stretch;display:grid;grid-auto-flow:column;grid-template-rows:repeat(3,auto);gap:8px;justify-content:start;overflow-x:auto;scrollbar-width:none;margin:0 -28px;padding:0 28px 8px}
+  .stat .cloud::-webkit-scrollbar{display:none}
+  .stat .cloud span{white-space:nowrap;font-size:13.5px;padding:8px 13px}
+  .stat .big{font-size:clamp(96px,26vw,128px)}
+  .stat .lab{font-size:19px}
+  .g5{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .hostgrid{gap:20px 26px;margin-top:32px}
+  .hostgrid img{height:24px;max-width:120px}
+  .hosts .feat{margin-top:64px;padding-top:56px}
+  .news{padding:36px 0}
+  .news .btn{width:100%}
+}
+@media (max-width:480px){
+  .propgrid{grid-template-columns:1fr;gap:12px}
+  .prop{flex-direction:row;align-items:flex-start;padding:18px;gap:14px}
+  .prop h3{font-size:17px}
+  .prop p{font-size:14.5px}
+  .g5{grid-template-columns:1fr}
+  .pth{padding:26px 22px}
+  .pth h3{font-size:30px}
+}
+</style>
+</head>
+<body>
+
+<!-- announcement marquee -->
+<div class="bar" aria-hidden="true">
+  <div class="track" id="marq">
+    <span>Fully remote externships you can start working on today</span><span>Breaking Games</span><span>TruBridge</span><span>Pinterest</span><span>Canva</span><span>Amazon</span><span>Pfizer</span><span>TikTok</span><span>Hydroficient</span><span>No prior experience required</span><span>$0 to start</span>
+  </div>
+</div>
+
+<header class="hero onDark">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html" aria-label="Extern home"><img src="assets/extern_white.svg" alt="Extern"></a>
+      <ul>
+        <li><a href="students.html" aria-current="page">Students</a></li>
+        <li><a href="higher-ed.html">Higher Ed</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="acts">
+        <a class="btn ghost onDark sm" href="https://app.extern.com/sign-in">Log in</a>
+        <a class="btn primary sm" href="https://app.extern.com/sign-up" data-cta="nav">Sign Up · $0</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="menu" id="menu">
+      <a href="students.html" aria-current="page">Students</a>
+      <a href="higher-ed.html">Higher Ed</a>
+      <a href="companies.html">Companies</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+      <a href="https://app.extern.com/sign-in">Log in</a>
+    </div>
+
+    <div class="heroGrid" id="top">
+      <div class="heroCopy">
+        <span class="eyebrow">For students</span>
+        <h1 class="serif">The flexible way to get professional experience</h1>
+        <p class="lead"><span class="full">Build your resume through real world projects while building a network that lasts. Real companies, real projects, real connections.</span><span class="short">Build your resume through real world projects while building a network that lasts.</span></p>
+        <div class="row">
+          <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="hero">Sign Up · $0 to start</a>
+          <a class="btn ghost onDark lg" href="index.html#projects">See live externships</a>
+        </div>
+        <div class="trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No prior experience required</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>10 to 15 hours a week, fully remote</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>74% hired within 12 months</span>
+        </div>
+        <div class="hprops" aria-label="Why students choose externships">
+          <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><p><b>Focus on building skills</b><span>No exams, quizzes or busy work. Just real projects that drive business impact.</span></p></div>
+          <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><p><b>Set your own hours</b><span>100% flexible and remote. 10 to 15 hours a week, on your schedule.</span></p></div>
+          <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span><p><b>Real work, real learning</b><span>Develop essential career skills that you can only gain through real work. Learn by doing.</span></p></div>
+          <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><p><b>Accelerate your career</b><span>Nearly half of externs have landed roles at Fortune 1000 companies.</span></p></div>
+        </div>
+      </div>
+      <div class="heroArt">
+        <div class="photo"><img src="assets/step_do_the_work.jpg" alt="Two externs reviewing a dashboard together" fetchpriority="high"></div>
+      </div>
+      <div class="bigline serif" aria-hidden="true">
+        <b class="l"><span class="tw">Real work,</span></b>
+        <b class="m"><span class="tw">your hours,</span></b>
+        <b class="r"><span class="tw">your future.</span></b>
+      </div>
+      <p class="cap">Externs work remotely, 10 to 15 hours a week</p>
+    </div>
+  </div>
+</header>
+
+<!-- value props -->
+<div class="props">
+  <div class="wrap">
+    <div class="propgrid rv">
+      <div class="prop">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
+        <div><h3>Focus on building skills</h3><p>No exams, quizzes or busy work. Just real projects that drive business impact.</p></div>
+      </div>
+      <div class="prop">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+        <div><h3>Set your own hours</h3><p>100% flexible and remote. 10 to 15 hours a week, on your schedule.</p></div>
+      </div>
+      <div class="prop">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span>
+        <div><h3>Real work, real learning</h3><p>Develop essential career skills that you can only gain through real work. Learn by doing.</p></div>
+      </div>
+      <div class="prop">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+        <div><h3>Accelerate your career</h3><p>Real output for your resume, your LinkedIn and your interviews.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- three paths -->
+<section class="paths" id="paths">
+  <div class="wrap">
+    <div class="head stack rv">
+      <span class="eyebrow">Who externships are for</span>
+      <h2 class="serif grow">Looking to discover, launch, or accelerate your career?</h2>
+      <p class="lead">Externs come in at every stage. Pick the door that sounds like you.</p>
+    </div>
+    <div class="pgrid rv">
+      <a class="pth" href="index.html#match">
+        <span class="eyebrow">Discover</span>
+        <h3 class="serif">Exploring career paths?</h3>
+        <p>No experience? No problem. Tackle real projects. Discover your future.</p>
+        <span class="more">Find an externship that fits <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a class="pth" href="index.html#projects">
+        <span class="eyebrow">Launch</span>
+        <h3 class="serif">Chasing your dream job?</h3>
+        <p>You know where you want to be. We’re here to give you that boost.</p>
+        <span class="more">See what’s live now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a class="pth" href="https://app.extern.com/sign-up" data-cta="path-upskill">
+        <span class="eyebrow">Accelerate</span>
+        <h3 class="serif">Looking to upskill?</h3>
+        <p>Strengthen your career ladder. Grow skills at your pace, anywhere.</p>
+        <span class="more">Sign Up · $0 to start <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- the stat -->
+<section class="stat onDark" id="outcomes">
+  <div class="wrap split">
+    <div class="stack rv" style="gap:14px">
+      <span class="eyebrow">Outcomes</span>
+      <div class="big">74%</div>
+      <p class="lab">of externs find a job outcome within a year</p>
+    </div>
+    <div class="stack rv">
+      <h2 class="serif grow">Where the externs on this page went next</h2>
+      <div class="cloud" aria-label="Employers named by the externs quoted on this page">
+        <span><b>Lazard</b> · Investment Banking Analyst</span><span><b>Amazon</b> · Operations Summer Intern</span><span><b>Morgan Stanley</b> · Operations Summer Analyst</span><span><b>HSBC</b> · Summer Analyst</span><span><b>McLaren Racing</b> · Intern</span><span><b>Mangusta Capital</b> · VC Analyst Intern</span><span><b>Ally Equity Partners</b> · Private Equity Summer Analyst</span><span><b>WPP Media</b> · Media Intern</span><span><b>Acceldata</b> · GTM Intern</span><span><b>NBT Financial</b> · Marketing Intern</span><span><b>FIFA World Cup Houston</b> · Intern</span><span><b>University of San Francisco</b> · Data &amp; Operations Analyst</span>
+      </div>
+      <p class="fine">Every role above is named by an extern quoted below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- testimonials carousel -->
+<section class="tst" id="stories">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="stack" style="gap:12px">
+        <span class="eyebrow">Wall of love</span>
+        <h2 class="serif grow">Hear from someone who’s been in your shoes</h2>
+      </div>
+      <div class="arrows">
+        <button type="button" id="prev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <span class="cnt" id="cnt">1 of 12</span>
+        <button type="button" id="next" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <div class="rail rv" id="rail">
+      <div class="tcard"><div class="who"><img src="assets/face_devan-horn.jpg" alt=""><div><b>Devan Horn</b><span>Mangusta Capital externship</span></div></div><blockquote>“The externship experience gave me hands-on exposure to real-world investment analysis and sharpened how I present financial insights at a professional level. The company and I stayed in contact and I was later offered the opportunity to join the team and I took it.”</blockquote><p class="now">Currently <b>Venture Capital Analyst intern at Mangusta Capital</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_gevans-gabeau.jpg" alt=""><div><b>Gevans Gabeau</b><span>Finance externship</span></div></div><blockquote>“In my Capital One interview, they asked what I was doing to grow professionally, and I immediately drew back on my externship experience. Everyone wants you to have experience before you can even get an internship, and Extern was what helped me break through that barrier.”</blockquote><p class="now">Currently <b>Incoming Investment Banking Analyst at Lazard</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_khalid-farah.jpg" alt=""><div><b>Khalid Farah</b><span>Finance externship</span></div></div><blockquote>“The project felt real, practical, useful, and using AI made things easier to understand. Overall, it was a good experience that showed me how things actually work.”</blockquote><p class="now">Currently <b>Private Equity Summer Analyst at Ally Equity Partners</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_gabrielle-villagonzalo.jpg" alt=""><div><b>Gabrielle Villagonzalo</b><span>Extern alum</span></div></div><blockquote>“I love how Extern guides their externs. They’re there with you every step of the way. It’s very beginner friendly and it’s also interactive learning that meets you where you’re at.”</blockquote><p class="now">Currently <b>Incoming Operations Summer Intern at Amazon</b></p></div>
+      <div class="tcard"><div class="who"><span class="av g" aria-hidden="true">I</span><div><b>Isis Cesar</b><span>Extern alum</span></div></div><blockquote>“I really enjoyed this experience. It was flexible, which made it easier to focused on school, work, and do the externship. I got to meet people (networking).”</blockquote><p class="now">Currently <b>Intern at FIFA World Cup Houston</b></p></div>
+      <div class="tcard"><div class="who"><span class="av l" aria-hidden="true">J</span><div><b>Jaysen Price</b><span>Consumer insights externship</span></div></div><blockquote>“Conducting market research, analyzing real consumer data, and then turning those insights into a strategic product recommendations gave me confidence. It showed me what a business project really looks like and how it all comes together.”</blockquote><p class="now">Currently <b>Marketing Intern at NBT Financial</b></p></div>
+      <div class="tcard"><div class="who"><span class="av p" aria-hidden="true">A</span><div><b>Aman Bilodi</b><span>VC externship</span></div></div><blockquote>“The externship taught me a lot about Venture Capital and the process of selecting, doing due diligence, and creating an investment memo for a startup. This Externship taught me a lot of skills that I can use later in my career.”</blockquote><p class="now">Currently <b>GTM Intern at Acceldata</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_daniel-shaker.jpg" alt=""><div><b>Daniel Shaker</b><span>Finance externship</span></div></div><blockquote>“Overall it was a great experience and great way to learn new skills. They really take the time to guide you and when you’re learning new skills, you’re also learning about the tools which is huge.”</blockquote><p class="now">Currently <b>Incoming Operations Summer Analyst at Morgan Stanley</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_elizabeth-guzman-de-anda.jpg" alt=""><div><b>Elizabeth Guzman De Anda</b><span>Data externship</span></div></div><blockquote>“My Master’s program is more transactional. You do the assignments, you learn the theory, but Extern helped me see how to actually use those skills in a business context.”</blockquote><p class="now">Currently <b>Data &amp; Operations Analyst at University of San Francisco</b></p></div>
+      <div class="tcard"><div class="who"><span class="av" aria-hidden="true">A</span><div><b>Addis Romero</b><span>Extern alum</span></div></div><blockquote>“I landed multiple roles because of Extern, and I am living out all of my dreams. Thank you for believing in me. I’m so grateful to have been part of this program!”</blockquote><p class="now">Currently <b>Media Intern at WPP Media</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_alice-mollet.jpg" alt=""><div><b>Alice Mollet</b><span>Finance externship</span></div></div><blockquote>“I was able to have tangible experiences to touch upon in my interviews. I explained what I was working on and how it would impact my role in their firm, and they loved it.”</blockquote><p class="now">Currently <b>Summer Analyst at HSBC</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_alyssa-jhingree.jpg" alt=""><div><b>Alyssa Jhingree</b><span>VC externship</span></div></div><blockquote>“Positive aspects included hands-on experience in structuring investment memos and utilizing AI to streamline content creation. This is the type of experience that matters when interviewing.”</blockquote><p class="now">Currently <b>Intern at McLaren Racing</b></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- how it works -->
+<section class="hiw" id="how">
+  <div class="wrap">
+    <div class="head stack rv">
+      <span class="eyebrow">How it works</span>
+      <h2 class="serif grow">Five steps from <span style="white-space:nowrap">sign-up</span> to work you can show</h2>
+      <p class="lead">Every externship follows the same shape: pick a project with a real company, learn what you need as you go, deliver something the company can use, and put it on your resume.</p>
+    </div>
+    <div class="g5 rv">
+      <div class="step"><span class="num">1</span><h3>Find an externship that matches your ambitions</h3><p>Consulting, marketing, product, finance, data or sales: choose an externship that lines up with your goals and the path you want to explore.</p></div>
+      <div class="step"><span class="num">2</span><h3>Develop career-ready skills</h3><p>Flexible, self-paced learning built into the project. You gain hands-on skills, including generative AI, that give you an edge in your current and future roles.</p></div>
+      <div class="step"><span class="num">3</span><h3>Network and build meaningful connections</h3><p>Connect with a community of like-minded externs and seasoned professionals. Get guidance and build a network that supports you for years.</p></div>
+      <div class="step"><span class="num">4</span><h3>Contribute to real projects at companies</h3><p>Work on projects where your insights feed real business decisions and help the company shape what comes next.</p></div>
+      <div class="step"><span class="num">5</span><h3>Showcase your growth on your resume</h3><p>Stand out by naming the specific, industry-relevant skills you built and the outputs you delivered. Your resume and LinkedIn reflect real outcomes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- companies that host externships + live cards -->
+<section class="hosts" id="companies">
+  <div class="wrap">
+    <div class="stack c rv" style="max-width:760px;margin:0 auto">
+      <span class="eyebrow">Real companies, real briefs</span>
+      <h2 class="serif grow">Companies that host externships</h2>
+    </div>
+    <ul class="hostgrid rv" aria-label="Companies that have hosted externships">
+      <li><img src="assets/hosts/att.svg" alt="AT&amp;T"></li>
+      <li><img src="assets/hosts/hsbc.svg" alt="HSBC"></li>
+      <li><img class="tall" src="assets/hosts/ccf.png" alt="The Coca-Cola Foundation"></li>
+      <li><img src="assets/hosts/home_depot.png" alt="The Home Depot"></li>
+      <li><img src="assets/hosts/cargill.png" alt="Cargill"></li>
+      <li><img src="assets/hosts/beats_by_dre.svg" alt="Beats by Dre"></li>
+      <li><img src="assets/hosts/hptechventures-tinypng.png" alt="HP Tech Ventures"></li>
+      <li><img class="dk" src="assets/hosts/snapchat-logo-2013.png" alt="Snapchat"></li>
+      <li><img src="assets/hosts/macquarie_logo_1.png" alt="Macquarie"></li>
+      <li><img src="assets/hosts/greenpeace_logo.svg.png" alt="Greenpeace"></li>
+      <li><img src="assets/hosts/hugo_boss.svg" alt="Hugo Boss"></li>
+      <li><img src="assets/hosts/national_research_group_a_stagwell_company_logo.jpeg" alt="National Research Group"></li>
+      <li><img src="assets/hosts/expedia_small.png" alt="Expedia Group"></li>
+      <li><img src="assets/hosts/6101a060753e5c2d48860715_nature_conservancy_logo.jpg" alt="The Nature Conservancy"></li>
+    </ul>
+
+    <div class="feat" id="projects">
+      <div class="head rv">
+        <div class="stack" style="gap:12px">
+          <span class="tag live">Live now</span>
+          <h2 class="serif grow" style="font-size:clamp(30px,3.2vw,44px)">Externships you can start working on today</h2>
+        </div>
+        <a class="btn ghost" href="https://www.extern.com/externships">Browse all externships ↗</a>
+      </div>
+      <div class="live3 rv">
+        <a class="pcard" href="https://app.extern.com/sign-up" data-cta="card-breaking">
+          <div class="img"><img src="assets/card_breaking.jpg" alt="" loading="lazy"><img class="sq" src="assets/sq_breaking.png" alt="Breaking Games"></div>
+          <div class="b">
+            <div class="meta"><span class="tag">Data Analytics &amp; Visualization</span><span class="tag">10 weeks</span></div>
+            <h3>Breaking Games E-Commerce Data Analysis &amp; Strategy</h3>
+            <p>What makes one shopper click “buy now” while another abandons their cart? Dig into real marketing data from Google Analytics, Meta Ads, and Shopify to uncover what drives clicks, conversions, and repeat purchases.</p>
+          </div>
+        </a>
+        <a class="pcard" href="https://app.extern.com/sign-up" data-cta="card-trubridge">
+          <div class="img"><img src="assets/card_trubridge.jpg" alt="" loading="lazy"><img class="sq" src="assets/sq_trubridge.png" alt="TruBridge"></div>
+          <div class="b">
+            <div class="meta"><span class="tag">Healthcare Analytics</span><span class="tag">8 weeks</span></div>
+            <h3>TruBridge Healthcare Data Analytics</h3>
+            <p>Ask meaningful research questions, collect and clean population-level data, run statistical and correlational analyses, and present findings using AI tools like ChatGPT, Claude, and Gamma.</p>
+          </div>
+        </a>
+        <a class="pcard" href="https://app.extern.com/sign-up" data-cta="card-pinterest">
+          <div class="img"><img src="assets/card_pinterest.jpg" alt="" loading="lazy"><img class="sq" src="assets/sq_pinterest.png" alt="Pinterest"></div>
+          <div class="b">
+            <div class="meta"><span class="tag">Consumer Insights</span><span class="tag">6 weeks</span></div>
+            <h3>Pinterest Gen Z Consumer Behavior</h3>
+            <p>Design a real survey using the Jobs-to-be-Done framework, deploy it to Gen Z users in your own network, and build one sharp, evidence-backed insight into an advertiser pitch for Pinterest’s own sales team.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- faq -->
+<section class="faq" id="faq">
+  <div class="wrap split">
+    <div class="stack rv">
+      <span class="eyebrow">FAQs</span>
+      <h2 class="serif grow">Questions students ask</h2>
+      <p class="lead">Account, billing and platform questions live in the <a href="https://intercom.help/externhelp/en" style="text-decoration:underline">Help Center</a>.</p>
+    </div>
+    <div class="acc rv">
+      <details open><summary>What is an externship?<i></i></summary><div class="a">A remote externship is a new form of professional work experience with learning built in. We don’t do simulations or busy work: real projects, real companies, real impact.</div></details>
+      <details><summary>What will I do in my externship?<i></i></summary><div class="a">You dive into a strategic business problem defined by the company you’re externing with. You get to know the industry and the problem space, study best practices and learn from experts. Then you put together a concrete deliverable that addresses the core business problem and present it to the company.</div></details>
+      <details><summary>How much time does an externship take?<i></i></summary><div class="a">Plan on about 10 to 15 hours a week, covering learning, training, research and time with peers and professionals. Externships run from a few weeks to a couple of months; each listing shows its length. Outside the scheduled group sessions, you do it all on your own schedule.</div></details>
+      <details><summary>How flexible is an externship?<i></i></summary><div class="a">Externships are fully remote and built to fit a busy schedule, whether you’re in school, working full-time or even on vacation. Most of the work is asynchronous through the Extern platform, and externship meetings are recorded. A few programs have small exceptions, noted in the program details.</div></details>
+      <details><summary>Am I eligible?<i></i></summary><div class="a">When we say anyone, we mean anyone. Whether you’re in college, taking classes while working, recently graduated or making a switch in your career, you’re welcome. Just read the program details and make sure you can commit 10 to 15 hours a week.</div></details>
+      <details><summary>When can I start?<i></i></summary><div class="a">Whenever you’re ready. Externships open on a rolling basis: sign up, pick one that fits and start working on it. If a program doesn’t fit your schedule, you can move to another externship that matches your ambitions.</div></details>
+      <details><summary>Will doing an externship help me get hired?<i></i></summary><div class="a">An externship is what you make of it, but many externs say it was pivotal in their hiring process: 74% of externs find a job outcome within a year. Most entry-level postings still ask for experience, and it takes experience to get experience. Nothing guarantees an offer, but real work on your resume signals to recruiters that you’ve built skills that matter in the workplace.</div></details>
+      <details><summary>Is an externship the same as shadowing?<i></i></summary><div class="a">No. Externships put you on real business projects offered by partner companies. You get mentorship and training as experts introduce the project, then complete assignments and a final presentation or report according to a curriculum.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- newsletter -->
+<div class="news">
+  <div class="wrap rv">
+    <div>
+      <h3 class="serif">The Edge by Extern</h3>
+      <p>The only newsletter you need to leap from classroom to career. Straight to your inbox every week.</p>
+    </div>
+    <a class="btn ghost" href="https://www.extern.com/the-edge-newsletter/join">Subscribe to The Edge ↗</a>
+  </div>
+</div>
+
+<!-- closing -->
+<section class="close onDark">
+  <img src="assets/step_pick_project.jpg" alt="" loading="lazy">
+  <div class="wrap rv">
+    <h2 class="serif grow">Build your future</h2>
+    <p class="lead">Sign up for your next externship.</p>
+    <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="closing">Sign Up · $0 to start</a>
+    <p class="terms" style="color:rgba(255,255,255,.85)"><b style="color:#fff">$0 today.</b> Start with a 7-day free trial, then choose the plan that best fits your goals.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <img src="assets/extern_white.svg" alt="Extern" style="height:28px;width:auto">
+        <p class="tag2">Work experience. Anytime, anywhere.</p>
+        <div class="soc">
+          <a href="https://www.linkedin.com/company/externhq/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="https://www.instagram.com/externhq/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+          <a href="https://www.tiktok.com/@externhq" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+          <a href="https://www.youtube.com/@externhq" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Externships</h4><ul>
+        <li><a href="https://www.extern.com/externships">Explore all externships</a></li>
+        <li><a href="https://www.extern.com/explore/consulting">Consulting</a></li>
+        <li><a href="https://www.extern.com/explore/finance">Finance</a></li>
+        <li><a href="https://www.extern.com/explore/marketing">Marketing</a></li>
+        <li><a href="https://www.extern.com/explore/product">Product</a></li>
+        <li><a href="https://www.extern.com/explore/sales-business-development">Sales &amp; BD</a></li>
+      </ul></div>
+      <div><h4>Resources</h4><ul>
+        <li><a href="https://www.extern.com/blog">Blog</a></li>
+        <li><a href="https://www.extern.com/events">Community events</a></li>
+        <li><a href="https://app.extern.com/sign-up">Apply to be an Extern</a></li>
+        <li><a href="https://www.extern.com/the-edge-newsletter/join">Sign up for the newsletter</a></li>
+        <li><a href="https://intercom.help/externhelp/en">Help Center ↗</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="students.html">Students</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="higher-ed.html">Higher Ed</a></li>
+        <li><a href="about.html">Mission and values</a></li>
+        <li><a href="https://www.extern.com/wall-of-love">Wall of Love</a></li>
+      </ul></div>
+    </div>
+    <div class="bot">
+      <span>© 2026 Extern. All rights reserved.</span>
+      <span><a href="https://www.extern.com/privacy-policy">Privacy policy</a><a href="https://www.extern.com/terms-of-service">Terms of service</a><a href="https://intercom.help/externhelp/en">Help Center</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <div class="t"><b>Real projects that get you hired</b>$0 to start · no experience required</div>
+  <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="sticky">Sign Up · $0</a>
+</div>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // marquee: duplicate content once for a seamless loop
+  var m=document.getElementById('marq'); m.innerHTML+=m.innerHTML;
+
+  // mobile menu
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);});
+
+  // reveal on scroll
+  var rv=document.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){rv.forEach(function(e){e.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});rv.forEach(function(e){io.observe(e)});}
+
+  // sticky mobile CTA after the hero
+  var sticky=document.getElementById('sticky'),hero=document.querySelector('.hero');
+  function onScroll(){var r=hero.getBoundingClientRect();sticky.classList.toggle('show',r.bottom<0);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // testimonial rail
+  var rail=document.getElementById('rail'),cards=rail.children,cnt=document.getElementById('cnt');
+  function idx(){var c=cards[0],w=c.offsetWidth+20;return Math.min(cards.length,Math.round(rail.scrollLeft/w)+1)}
+  function upd(){cnt.textContent=idx()+' of '+cards.length}
+  rail.addEventListener('scroll',function(){requestAnimationFrame(upd)});
+  document.getElementById('next').addEventListener('click',function(){rail.scrollBy({left:cards[0].offsetWidth+20,behavior:reduce?'auto':'smooth'})});
+  document.getElementById('prev').addEventListener('click',function(){rail.scrollBy({left:-(cards[0].offsetWidth+20),behavior:reduce?'auto':'smooth'})});
+  upd();
+})();
+</script>
+</body>
+</html>
