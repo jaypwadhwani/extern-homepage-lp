@@ -146,46 +146,46 @@ h3{font-size:22px;line-height:1.25;letter-spacing:-.01em}
 .feat .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
 
 /* matcher (conversational questionnaire) */
-.match{background:var(--deep);color:#fff;padding:96px 0 120px;margin-top:-1px}
+.match{background:var(--deep);color:#fff;padding:56px 0 96px;margin-top:-1px}
 .match .intro{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center;max-width:880px;margin:0 auto 44px}
 .match .intro h2{font-size:clamp(38px,4.2vw,64px)}
 
 .match .intro .lead{color:rgba(255,255,255,.78)}
-.mcard{background:var(--cream);color:var(--ink);border-radius:32px;display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);overflow:hidden;box-shadow:0 60px 120px -60px rgba(0,0,0,.6);min-height:520px}
-.mrail{background:var(--cream2);padding:36px 32px;display:flex;flex-direction:column;gap:18px;border-right:1px solid var(--line)}
+.mcard{background:var(--cream);color:var(--ink);border-radius:32px;display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);overflow:hidden;box-shadow:0 60px 120px -60px rgba(0,0,0,.6);min-height:min(720px,82vh)}
+.mrail{background:var(--cream2);padding:44px 40px;display:flex;flex-direction:column;gap:18px;border-right:1px solid var(--line)}
 .mrail .who{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:600;color:var(--muted)}
 .mrail .who img{width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid var(--line);padding:5px}
-.mb{background:#fff;border-radius:18px 18px 18px 6px;padding:14px 16px;font-size:15px;line-height:1.5;box-shadow:0 8px 24px rgba(15,26,32,.06);max-width:100%}
+.mb{background:#fff;border-radius:18px 18px 18px 6px;padding:18px 20px;font-size:17px;line-height:1.5;box-shadow:0 8px 24px rgba(15,26,32,.06);max-width:100%}
 .mb.q{color:var(--ink2)}
 .mb.me{background:var(--ink);color:#fff;border-radius:18px 18px 6px 18px;align-self:flex-end;display:flex;flex-wrap:wrap;gap:6px}
 .mb.me span{background:rgba(255,255,255,.14);border-radius:999px;padding:4px 10px;font-size:13px;font-weight:500}
 .mb.enter{animation:pop .35s cubic-bezier(.2,.7,.2,1)}
 @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
 .mget{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
-.mget li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink2);line-height:1.45}
+.mget li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--ink2);line-height:1.45}
 .mget li::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--green-soft);flex:0 0 auto;margin-top:2px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b7431' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg>");background-size:10px;background-position:center;background-repeat:no-repeat}
 .mrail .hint{margin-top:auto;font-size:13px;color:var(--muted);line-height:1.5}
-.mmain{padding:40px 44px 36px;display:flex;flex-direction:column;gap:26px;min-width:0}
-.mtop{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.mmain{padding:48px 56px 44px;display:flex;flex-direction:column;gap:32px;min-width:0}
+.mtop{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:14.5px;font-weight:600;color:var(--muted)}
 .mprog{display:flex;gap:8px;flex:1;max-width:260px}
 .mprog i{height:4px;flex:1;border-radius:999px;background:var(--line);position:relative;overflow:hidden}
 .mprog i::after{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .mprog i.done::after,.mprog i.on::after{transform:scaleX(1)}
 .mprog i.on::after{background:var(--green)}
-.mstep{display:none;flex-direction:column;gap:22px;flex:1}
+.mstep{display:none;flex-direction:column;gap:28px;flex:1}
 .mstep.on{display:flex;animation:stepin .4s cubic-bezier(.2,.7,.2,1)}
 @keyframes stepin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
-.mstep h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.1vw,44px);line-height:1.05;letter-spacing:-.015em;text-wrap:balance}
-.mstep .sub{font-size:15.5px;color:var(--ink2)}
-.opts{display:flex;flex-wrap:wrap;gap:10px}
-.opts button{border:1.5px solid var(--line2);background:#fff;color:var(--ink);border-radius:999px;padding:0 20px;height:54px;font-size:16px;font-weight:500;display:inline-flex;align-items:center;gap:10px;transition:all .15s;text-align:left}
+.mstep h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(32px,3.6vw,58px);line-height:1.05;letter-spacing:-.015em;text-wrap:balance}
+.mstep .sub{font-size:18px;color:var(--ink2)}
+.opts{display:flex;flex-wrap:wrap;gap:12px}
+.opts button{border:1.5px solid var(--line2);background:#fff;color:var(--ink);border-radius:999px;padding:0 24px;height:62px;font-size:18px;font-weight:500;display:inline-flex;align-items:center;gap:10px;transition:all .15s;text-align:left}
 .opts button:hover{border-color:var(--ink)}
 .opts button i{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line2);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;transition:all .15s}
 .opts button i svg{width:11px;height:11px;opacity:0}
 .opts button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .opts button.on i{background:var(--green);border-color:var(--green)}
 .opts button.on i svg{opacity:1}
-.opts.single button{height:auto;min-height:54px;padding:14px 20px;border-radius:20px;width:100%;max-width:560px}
+.opts.single button{height:auto;min-height:62px;padding:16px 24px;border-radius:20px;width:100%;max-width:560px}
 .opts button[disabled]{opacity:.45;cursor:not-allowed}
 .mfoot{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:auto;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
 .mfoot .back{background:transparent;border:0;color:var(--ink2);font-size:15px;font-weight:500;display:inline-flex;gap:8px;align-items:center;padding:8px 4px}
@@ -335,13 +335,16 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .bigline{position:absolute;left:0;right:0;bottom:26px;grid-column:1;padding:0 20px;font-size:clamp(52px,15vw,74px)}
   .cap{right:20px;bottom:8px}
   .split,.fw .split,.faq .split,.pf .split,.band .wrap{grid-template-columns:1fr;gap:36px}
-  .match{padding:64px 0 72px}
+  .match{padding:40px 0 56px}
+  .mcard{min-height:0}
+  .mmain{padding:24px 20px 22px;gap:22px}
+  .mstep h3{font-size:clamp(30px,8.6vw,38px)}
+  .mstep .sub{font-size:15.5px}
+  .opts button{height:50px;font-size:15px;padding:0 16px}
   .mcard{grid-template-columns:1fr;border-radius:24px;min-height:0}
   .mrail{border-right:0;border-bottom:1px solid var(--line);padding:16px 20px;gap:10px}
   .mrail .hint,.mrail .mb.q,.mrail .who,.mrail .mget{display:none}
   .mrail:not(:has([data-echo])){display:none}
-  .mmain{padding:24px 20px 22px}
-  .opts button{height:48px;font-size:15px;padding:0 16px}
   .mres{grid-template-columns:1fr}
   .mfoot .right{width:100%;justify-content:space-between}
   .mfoot .btn{flex:1}
@@ -448,11 +451,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
 <!-- matcher -->
 <section class="match onDark" id="match">
   <div class="wrap">
-    <div class="intro rv">
-      <span class="eyebrow" style="color:var(--green)">Find your match · about a minute</span>
-      <h2 class="serif" id="mtitle">Tell us a little. We’ll show you where to start.</h2>
-      <p class="lead">Three quick questions. At the end you get three externships picked for you, not a form to fill.</p>
-    </div>
     <div class="mcard rv" id="mcard">
       <aside class="mrail" id="mrail" aria-live="polite">
         <div class="who"><img src="assets/extern_mark.svg" alt="">Extern</div>
