@@ -17,8 +17,9 @@
   --deep:#0e1e2b;--deep2:#14303e;
   --green:#18dd4c;--green-dk:#0fc43f;--green-soft:#dff8e5;--green-tx:#0b7431;
   --blue:#2853d2;--peach:#fde7d3;--lav:#e6e4ff;
-  --r:22px;--rs:14px;
+  --r:22px;--rs:14px;--wrapmax:1360px;
 }
+@media (min-width:1800px){:root{--wrapmax:1560px}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -28,11 +29,11 @@ button{font-family:inherit;cursor:pointer}
 p{margin:0}
 h1,h2,h3{margin:0;font-weight:400}
 .serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.015em}
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
-section{padding:96px 0}
+.wrap{max-width:var(--wrapmax);margin:0 auto;padding:0 28px}
+section{padding:clamp(80px,8vw,120px) 0}
 .eyebrow{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-h1{font-size:clamp(44px,6.2vw,84px);line-height:.98;letter-spacing:-.02em;text-wrap:balance}
-h2{font-size:clamp(38px,4.4vw,60px);line-height:1.02;letter-spacing:-.015em;text-wrap:balance}
+h1{font-size:clamp(46px,6.4vw,96px);line-height:.96;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(38px,4.6vw,68px);line-height:1.02;letter-spacing:-.015em;text-wrap:balance}
 h3{font-size:22px;line-height:1.25;letter-spacing:-.01em}
 .lead{font-size:clamp(17px,1.35vw,20px);line-height:1.55;color:var(--ink2);text-wrap:pretty}
 .fine{font-size:13px;color:var(--muted);line-height:1.5}
@@ -77,26 +78,24 @@ h3{font-size:22px;line-height:1.25;letter-spacing:-.01em}
 .hero{background:var(--deep);color:#fff;padding:0;position:relative;overflow:hidden}
 .hero .wrap{position:relative}
 .heroGrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:auto auto;column-gap:40px;align-items:start;padding:40px 0 0;position:relative}
-.heroCopy{display:flex;flex-direction:column;gap:26px;padding-bottom:56px;position:relative;z-index:2;grid-column:1;grid-row:1}
-.heroCopy .lead{color:rgba(255,255,255,.82);max-width:520px}
+.heroCopy{display:flex;flex-direction:column;gap:26px;padding-bottom:36px;position:relative;z-index:2;grid-column:1;grid-row:1}
+.heroCopy .lead{color:rgba(255,255,255,.82);max-width:560px;font-size:clamp(17px,1.4vw,21px)}
 .heroCopy .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .trust{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:rgba(255,255,255,.8);font-weight:500}
 .trust span{display:inline-flex;gap:8px;align-items:center}
 .trust svg{width:16px;height:16px;flex:0 0 auto;color:var(--green)}
 .heroArt{position:relative;align-self:stretch;grid-column:2;grid-row:1/3}
-.heroArt .photo{position:absolute;inset:0 -24px 0 0;border-radius:var(--r) 0 0 0;overflow:hidden}
-.heroArt .photo img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;transform:scale(1.02);animation:kenburns 14s ease-out forwards}
+.heroArt .photo{position:absolute;inset:0 calc((min(var(--wrapmax),100vw) - 100vw)/2 - 28px) 0 0;border-radius:var(--r) 0 0 0;overflow:hidden}
+.heroArt .photo img{width:100%;height:100%;object-fit:cover;object-position:55% 35%;transform:scale(1.02);animation:kenburns 14s ease-out forwards}
 @keyframes kenburns{to{transform:scale(1.08)}}
 .heroArt .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,30,43,0) 45%,rgba(14,30,43,.75) 100%)}
-.bigline{grid-column:1/3;grid-row:2;position:relative;z-index:3;padding:0 0 40px;pointer-events:none;font-size:clamp(56px,8.2vw,124px);line-height:.88;letter-spacing:-.02em;color:#fff}
+.bigline{grid-column:1/3;grid-row:2;position:relative;z-index:3;padding:0 0 44px;pointer-events:none;text-align:right;font-size:clamp(56px,8.6vw,150px);line-height:.86;letter-spacing:-.02em;color:#fff}
 .bigline b{font-weight:400;display:block}
-.bigline .l{padding-left:2%}
-.bigline .m{padding-left:26%}
-.bigline .r{text-align:right}
+.bigline .l,.bigline .m,.bigline .r{padding:0}
 .bigline .tw{display:inline-block;opacity:0;transform:translateY(24px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
 .bigline .tw:nth-child(2){animation-delay:.25s}.bigline .tw:nth-child(3){animation-delay:.5s}
 @keyframes rise{to{opacity:1;transform:none}}
-.cap{position:absolute;right:0;bottom:12px;z-index:4;font-size:12px;color:rgba(255,255,255,.6)}
+.cap{position:absolute;right:0;bottom:14px;z-index:4;font-size:12px;color:rgba(255,255,255,.6)}
 
 /* logo strip */
 .logos{padding:56px 0 20px}
@@ -147,26 +146,12 @@ h3{font-size:22px;line-height:1.25;letter-spacing:-.01em}
 .feat .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
 
 /* matcher (conversational questionnaire) */
-.match{position:fixed;inset:0;z-index:100;background:rgba(14,30,43,.97);color:#fff;overflow-y:auto;overscroll-behavior:contain;padding:56px 0 64px;display:none}
-.match.open{display:block;animation:ovl .3s ease}
-@keyframes ovl{from{opacity:0}to{opacity:1}}
-.match.open .mcard{animation:rise2 .45s cubic-bezier(.2,.7,.2,1)}
-@keyframes rise2{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-body.locked{overflow:hidden}
-.mclose{position:fixed;top:22px;right:22px;z-index:101;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;display:inline-flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
-.mclose:hover{background:#fff;color:var(--ink)}
-.mclose svg{width:20px;height:20px}
-.match .intro{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;max-width:820px;margin:0 auto 32px}
-.match .intro h2{font-size:clamp(34px,3.6vw,52px)}
-.tease{background:var(--paper);border-bottom:1px solid var(--line)}
-.tease .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:22px;padding-bottom:22px;flex-wrap:wrap}
-.tease .l{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.tease .l .serif{font-size:clamp(22px,2vw,28px);line-height:1.1}
-.tease .l span.eyebrow{color:var(--green-tx)}
-.tease .r{display:flex;align-items:center;gap:14px}
-.tease .r .fine{max-width:260px}
+.match{background:var(--deep);color:#fff;padding:96px 0 120px;margin-top:-1px}
+.match .intro{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center;max-width:880px;margin:0 auto 44px}
+.match .intro h2{font-size:clamp(38px,4.2vw,64px)}
+
 .match .intro .lead{color:rgba(255,255,255,.78)}
-.mcard{background:var(--cream);color:var(--ink);border-radius:32px;display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);overflow:hidden;box-shadow:0 60px 120px -60px rgba(0,0,0,.6);min-height:620px}
+.mcard{background:var(--cream);color:var(--ink);border-radius:32px;display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);overflow:hidden;box-shadow:0 60px 120px -60px rgba(0,0,0,.6);min-height:520px}
 .mrail{background:var(--cream2);padding:36px 32px;display:flex;flex-direction:column;gap:18px;border-right:1px solid var(--line)}
 .mrail .who{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:600;color:var(--muted)}
 .mrail .who img{width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid var(--line);padding:5px}
@@ -252,16 +237,13 @@ body.locked{overflow:hidden}
 
 /* trial band */
 .band{background:var(--green-soft);position:relative;overflow:hidden}
-.band .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:56px;align-items:center}
+.band .wrap{max-width:860px;position:relative;z-index:1}
 .band h2{font-size:clamp(40px,4.6vw,64px)}
-.band .cta{display:flex;flex-direction:column;gap:14px;align-items:flex-start;margin-top:8px}
-.band .bigmark{position:absolute;right:-60px;bottom:-90px;width:380px;opacity:.08;pointer-events:none}
-.pshow{position:relative;z-index:1}
-.pshow .frame{border-radius:22px;overflow:hidden;background:#fff;border:1px solid rgba(15,26,32,.08);box-shadow:0 40px 80px -40px rgba(15,26,32,.45);transform:rotate(-2deg);aspect-ratio:1/1}
-.pshow .frame video,.pshow .frame img{width:100%;height:100%;object-fit:cover;display:block}
-.pshow .badge{position:absolute;left:-14px;bottom:26px;background:#fff;border-radius:999px;padding:10px 16px;font-size:13.5px;font-weight:600;display:flex;gap:8px;align-items:center;box-shadow:0 14px 30px rgba(15,26,32,.15);transform:rotate(-2deg)}
-.pshow .badge i{width:18px;height:18px;border-radius:50%;background:var(--green);display:inline-flex;align-items:center;justify-content:center}
-.pshow .badge svg{width:11px;height:11px}
+.band .cta{display:flex;flex-direction:column;gap:14px;align-items:center;margin-top:8px}
+.band .stack.c{align-items:center}
+.band .terms{text-align:center}
+.band .bigmark{position:absolute;right:-40px;bottom:-110px;width:460px;opacity:.07;pointer-events:none}
+
 
 /* outcomes */
 .out .cloud{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:980px;margin:36px auto 0}
@@ -351,15 +333,9 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .heroArt .photo img{object-position:55% 30%}
   .heroArt{grid-column:1;grid-row:2}
   .bigline{position:absolute;left:0;right:0;bottom:26px;grid-column:1;padding:0 20px;font-size:clamp(52px,15vw,74px)}
-  .bigline .m{padding-left:18%}
   .cap{right:20px;bottom:8px}
   .split,.fw .split,.faq .split,.pf .split,.band .wrap{grid-template-columns:1fr;gap:36px}
-  .match{padding:76px 0 40px}
-  .mclose{top:14px;right:14px;width:42px;height:42px}
-  .tease .wrap{padding-top:18px;padding-bottom:18px}
-  .tease .r{width:100%;justify-content:space-between}
-  .tease .r .fine{display:none}
-  .tease .btn{width:100%}
+  .match{padding:64px 0 72px}
   .mcard{grid-template-columns:1fr;border-radius:24px;min-height:0}
   .mrail{border-right:0;border-bottom:1px solid var(--line);padding:16px 20px;gap:10px}
   .mrail .hint,.mrail .mb.q,.mrail .who,.mrail .mget{display:none}
@@ -380,9 +356,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .band .bigmark{display:none}
   .pf .split{gap:36px}
   .browser .top{height:38px}
-  .pshow .frame{transform:rotate(-1.5deg)}
-  .pshow .badge{left:12px;bottom:-14px;font-size:12.5px}
-  .pshow{margin-bottom:14px}
   .tcard{flex-basis:300px;min-height:0}
   .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(246,245,240,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);gap:12px;align-items:center;justify-content:space-between;transform:translateY(110%);transition:transform .3s}
   .sticky.show{transform:none}
@@ -472,13 +445,57 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   </div>
 </header>
 
-<!-- matcher teaser -->
-<div class="tease">
-  <div class="wrap rv">
-    <div class="l"><span class="eyebrow">Not sure where to start?</span><p class="serif">Three questions. Three externships picked for you.</p></div>
-    <div class="r"><p class="fine">About a minute. No account needed to see your matches.</p><a class="btn ink" href="#match" data-cta="tease" style="background:var(--ink);color:#fff">Find my match</a></div>
+<!-- matcher -->
+<section class="match onDark" id="match">
+  <div class="wrap">
+    <div class="intro rv">
+      <span class="eyebrow" style="color:var(--green)">Find your match · about a minute</span>
+      <h2 class="serif" id="mtitle">Tell us a little. We’ll show you where to start.</h2>
+      <p class="lead">Three quick questions. At the end you get three externships picked for you, not a form to fill.</p>
+    </div>
+    <div class="mcard rv" id="mcard">
+      <aside class="mrail" id="mrail" aria-live="polite">
+        <div class="who"><img src="assets/extern_mark.svg" alt="">Extern</div>
+        <div class="mb q">Hi. Three quick questions and we’ll hand you three externships worth your first week. Nothing here is a commitment.</div>
+        <ul class="mget"><li>Three externships picked for you</li><li>About a minute, no account needed</li><li>Your picks carry into sign-up</li></ul>
+        <p class="hint">Your picks travel with you when you sign up. No card, no experience required.</p>
+      </aside>
+      <div class="mmain">
+        <div class="mtop"><span id="mcount">1 of 3</span><div class="mprog" id="mprog"><i class="on"></i><i></i><i></i></div></div>
+
+        <div class="mstep on" data-step="0">
+          <h3>First, what kind of work do you want to get your hands on?</h3>
+          <p class="sub">Pick up to three. We pull projects from these fields.</p>
+          <div class="opts" data-q="focus" data-max="3"></div>
+        </div>
+        <div class="mstep" data-step="1">
+          <h3>Got it. What do you want to walk away with?</h3>
+          <p class="sub">Pick up to three. This decides which projects we surface first.</p>
+          <div class="opts" data-q="goal" data-max="3"></div>
+        </div>
+        <div class="mstep" data-step="2">
+          <h3>Last one. Where are you right now?</h3>
+          <p class="sub">One pick. We match the level of the project, not just the topic.</p>
+          <div class="opts single" data-q="stage" data-max="1"></div>
+        </div>
+        <div class="mstep" data-step="3">
+          <h3 id="rtitle">Here’s where we’d start you.</h3>
+          <div class="mecho" id="mecho"></div>
+          <div class="mres" id="mres"></div>
+          <p class="sub">All three are remote, part-time and open now. Sign up free to open any of them.</p>
+        </div>
+
+        <div class="mfoot">
+          <button type="button" class="back" id="mback" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+          <div class="right">
+            <span class="cue" id="mcue">Pick at least one to continue</span>
+            <button type="button" class="btn primary next" id="mnext" disabled><span>Continue </span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- logo strip -->
 <div class="logos">
@@ -581,9 +598,9 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   <div class="wrap split">
     <div class="browser rv" id="pfbrowser">
       <div class="top"><i></i><i></i><i></i><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><b>extern.com</b>/alisson-hastings</div></div>
-      <video id="pfvid" muted playsinline loop preload="metadata" poster="assets/poster_portfolio.webp" aria-label="An Extern portfolio filling in as projects are completed">
-        <source src="assets/journey/portfolio-animation.webm" type="video/webm">
-        <source src="assets/journey/portfolio-animation.mp4" type="video/mp4">
+      <video id="pfvid" muted playsinline loop preload="metadata" poster="assets/journey/portfolio-loop-poster.jpg" aria-label="An Extern portfolio filling in as projects are completed">
+        <source src="assets/journey/portfolio-loop.webm" type="video/webm">
+        <source src="assets/journey/portfolio-loop.mp4" type="video/mp4">
       </video>
     </div>
     <div class="stack rv">
@@ -604,7 +621,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
 <section class="band" id="start">
   <img class="bigmark" src="assets/extern_mark.svg" alt="" aria-hidden="true">
   <div class="wrap">
-    <div class="stack rv">
+    <div class="stack c rv">
       <span class="eyebrow" style="color:var(--green-tx)">$0 today</span>
       <h2 class="serif">Start free. Keep the portfolio for good.</h2>
       <p class="lead">Sign up in a minute, pick a project, and start with a 7-day free trial. Guaranteed acceptance to all externships and projects. Every finished deliverable lands in your portfolio, and it stays live even after you leave Extern.</p>
@@ -612,12 +629,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
         <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="band">Sign Up</a>
         <p class="terms"><b>$0 today.</b> Start with a 7-day free trial, then choose the plan that best fits your goals.</p>
       </div>
-    </div>
-    <div class="pshow rv">
-      <div class="frame">
-        <img src="assets/classic_page.jpg" alt="A published Extern portfolio with a Verified by Extern project" loading="lazy" style="object-position:top">
-      </div>
-      <div class="badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>Verified by Extern · stays live for good</div>
     </div>
   </div>
 </section>
@@ -755,59 +766,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   </div>
 </footer>
 
-<!-- matcher -->
-<section class="match onDark" id="match" role="dialog" aria-modal="true" aria-labelledby="mtitle" hidden>
-  <button type="button" class="mclose" id="mclose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-  <div class="wrap">
-    <div class="intro">
-      <span class="eyebrow" style="color:var(--green)">Find your match · about a minute</span>
-      <h2 class="serif" id="mtitle">Tell us a little. We’ll show you where to start.</h2>
-      <p class="lead">Three quick questions. At the end you get three externships picked for you, not a form to fill.</p>
-    </div>
-    <div class="mcard" id="mcard" tabindex="-1" style="outline:none">
-      <aside class="mrail" id="mrail" aria-live="polite">
-        <div class="who"><img src="assets/extern_mark.svg" alt="">Extern</div>
-        <div class="mb q">Hi. Three quick questions and we’ll hand you three externships worth your first week. Nothing here is a commitment.</div>
-        <ul class="mget"><li>Three externships picked for you</li><li>About a minute, no account needed</li><li>Your picks carry into sign-up</li></ul>
-        <p class="hint">Your picks travel with you when you sign up. No card, no experience required.</p>
-      </aside>
-      <div class="mmain">
-        <div class="mtop"><span id="mcount">1 of 3</span><div class="mprog" id="mprog"><i class="on"></i><i></i><i></i></div></div>
-
-        <div class="mstep on" data-step="0">
-          <h3>First, what kind of work do you want to get your hands on?</h3>
-          <p class="sub">Pick up to three. We pull projects from these fields.</p>
-          <div class="opts" data-q="focus" data-max="3"></div>
-        </div>
-        <div class="mstep" data-step="1">
-          <h3>Got it. What do you want to walk away with?</h3>
-          <p class="sub">Pick up to three. This decides which projects we surface first.</p>
-          <div class="opts" data-q="goal" data-max="3"></div>
-        </div>
-        <div class="mstep" data-step="2">
-          <h3>Last one. Where are you right now?</h3>
-          <p class="sub">One pick. We match the level of the project, not just the topic.</p>
-          <div class="opts single" data-q="stage" data-max="1"></div>
-        </div>
-        <div class="mstep" data-step="3">
-          <h3 id="rtitle">Here’s where we’d start you.</h3>
-          <div class="mecho" id="mecho"></div>
-          <div class="mres" id="mres"></div>
-          <p class="sub">All three are remote, part-time and open now. Sign up free to open any of them.</p>
-        </div>
-
-        <div class="mfoot">
-          <button type="button" class="back" id="mback" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
-          <div class="right">
-            <span class="cue" id="mcue">Pick at least one to continue</span>
-            <button type="button" class="btn primary next" id="mnext" disabled><span>Continue </span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <div class="sticky" id="sticky">
   <div class="t"><b>Real projects that get you hired</b>$0 to start · no experience required</div>
   <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="sticky">Sign Up</a>
@@ -917,7 +875,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     var r=document.querySelector('.mfoot .right .restart'); if(r)r.remove();
     if(i<3){mcount.textContent=(i+1)+' of 3';mnext.hidden=false;mcue.hidden=false;mnext.firstChild.textContent=i===2?'Show my matches ':'Continue ';cue();}
     else{mcount.textContent='Your matches';mnext.hidden=true;mcue.hidden=true;results();}
-    if(mcard.getBoundingClientRect().top<0)overlay.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+    if(mcard.getBoundingClientRect().top<0)mcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
   }
   function results(){
     var stageIdx=Q.stage.indexOf(ans.stage[0]),goalIdx=ans.goal.map(function(g){return Q.goal.indexOf(g)});
@@ -929,14 +887,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     restart.addEventListener('click',function(){ans={focus:[],goal:[],stage:[]};document.querySelectorAll('.opts button').forEach(function(b){b.classList.remove('on');b.disabled=false;b.setAttribute('aria-pressed','false')});mrail.querySelectorAll('[data-echo]').forEach(function(e){e.remove()});go(0);});
     document.querySelector('.mfoot .right').appendChild(restart);
   }
-  var overlay=document.getElementById('match'),lastFocus=null;
-  function openM(){lastFocus=document.activeElement;overlay.hidden=false;overlay.classList.add('open');document.body.classList.add('locked');overlay.scrollTop=0;setTimeout(function(){mcard.focus({preventScroll:true})},50);if(history.replaceState)history.replaceState(null,'','#match');}
-  function closeM(){overlay.classList.remove('open');overlay.hidden=true;document.body.classList.remove('locked');if(history.replaceState)history.replaceState(null,'',location.pathname+location.search);if(lastFocus&&lastFocus.focus)lastFocus.focus();}
-  document.querySelectorAll('a[href="#match"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openM();})});
-  document.getElementById('mclose').addEventListener('click',closeM);
-  overlay.addEventListener('click',function(e){if(e.target===overlay)closeM();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('open'))closeM();});
-  if(location.hash==='#match')openM();
   mnext.addEventListener('click',function(){if(mnext.disabled)return;railEcho(ORDER[step]);go(step+1)});
   mback.addEventListener('click',function(){go(step-1)});
   cue();
