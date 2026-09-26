@@ -233,6 +233,23 @@ body.locked{overflow:hidden}
 .pcard .b p{font-size:14.5px;color:var(--ink2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pcard .meta{display:flex;gap:8px;flex-wrap:wrap}
 
+/* portfolio section */
+.pf .split{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px}
+.browser{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 90px -50px rgba(15,26,32,.45)}
+.browser .top{height:44px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid var(--line);background:var(--cream2)}
+.browser .top i{width:10px;height:10px;border-radius:50%;background:var(--line2);display:inline-block}
+.browser .top i:nth-child(1){background:#f5a6a0}.browser .top i:nth-child(2){background:#f3d38a}.browser .top i:nth-child(3){background:#9fdcae}
+.browser .url{margin-left:12px;flex:1;height:26px;border-radius:8px;background:#fff;border:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;align-items:center;padding:0 10px;gap:6px}
+.browser .url b{color:var(--ink);font-weight:600}
+.browser .url svg{width:11px;height:11px;color:var(--green-tx)}
+.browser video,.browser img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.pfl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.pfl li{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.pfl li i{width:24px;height:24px;border-radius:50%;background:var(--green);flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
+.pfl li i svg{width:13px;height:13px}
+.pfl li b{display:block;font-size:17px;font-weight:600;line-height:1.3}
+.pfl li span{display:block;font-size:15px;color:var(--ink2);line-height:1.5;margin-top:4px}
+
 /* trial band */
 .band{background:var(--green-soft);position:relative;overflow:hidden}
 .band .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:56px;align-items:center}
@@ -336,7 +353,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .bigline{position:absolute;left:0;right:0;bottom:26px;grid-column:1;padding:0 20px;font-size:clamp(52px,15vw,74px)}
   .bigline .m{padding-left:18%}
   .cap{right:20px;bottom:8px}
-  .split,.fw .split,.faq .split,.band .wrap{grid-template-columns:1fr;gap:36px}
+  .split,.fw .split,.faq .split,.pf .split,.band .wrap{grid-template-columns:1fr;gap:36px}
   .match{padding:76px 0 40px}
   .mclose{top:14px;right:14px;width:42px;height:42px}
   .tease .wrap{padding-top:18px;padding-bottom:18px}
@@ -361,6 +378,8 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .jhead .arrows{align-self:flex-end}
   .jtabs button{min-width:132px;font-size:13.5px}
   .band .bigmark{display:none}
+  .pf .split{gap:36px}
+  .browser .top{height:38px}
   .pshow .frame{transform:rotate(-1.5deg)}
   .pshow .badge{left:12px;bottom:-14px;font-size:12.5px}
   .pshow{margin-bottom:14px}
@@ -557,6 +576,30 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   </div>
 </section>
 
+<!-- portfolio -->
+<section class="pf" id="portfolio">
+  <div class="wrap split">
+    <div class="browser rv" id="pfbrowser">
+      <div class="top"><i></i><i></i><i></i><div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><b>extern.com</b>/alisson-hastings</div></div>
+      <video id="pfvid" muted playsinline loop preload="metadata" poster="assets/poster_portfolio.webp" aria-label="An Extern portfolio filling in as projects are completed">
+        <source src="assets/journey/portfolio-animation.webm" type="video/webm">
+        <source src="assets/journey/portfolio-animation.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="stack rv">
+      <span class="tag b">Your work, all in one place</span>
+      <h2 class="serif">Build a portfolio while you work</h2>
+      <p class="lead">Shareable, customizable and up to date. Your portfolio updates as you complete projects, giving you tangible proof of experience to share with recruiters and employers.</p>
+      <ul class="pfl">
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i><div><b>Built around real work</b><span>Showcase the projects, skills, and experience you gain through your externships.</span></div></li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i><div><b>Share with recruiters and employers</b><span>Stand out in the job market by showing what you’ve actually worked on.</span></div></li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i><div><b>Customize your portfolio</b><span>Add projects and experience from outside Extern too. It stays live even after you leave.</span></div></li>
+      </ul>
+      <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="portfolio">Sign Up</a>
+    </div>
+  </div>
+</section>
+
 <!-- trial band -->
 <section class="band" id="start">
   <img class="bigmark" src="assets/extern_mark.svg" alt="" aria-hidden="true">
@@ -572,10 +615,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     </div>
     <div class="pshow rv">
       <div class="frame">
-        <video id="pvid" muted playsinline loop preload="metadata" poster="assets/poster_portfolio.webp" aria-label="An Extern portfolio filling in as projects are completed">
-          <source src="assets/journey/portfolio-animation.webm" type="video/webm">
-          <source src="assets/journey/portfolio-animation.mp4" type="video/mp4">
-        </video>
+        <img src="assets/classic_page.jpg" alt="A published Extern portfolio with a Verified by Extern project" loading="lazy" style="object-position:top">
       </div>
       <div class="badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>Verified by Extern · stays live for good</div>
     </div>
@@ -911,7 +951,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   upd();
 
   // portfolio animation in the trial band
-  var pv=document.getElementById('pvid');
+  var pv=document.getElementById('pfvid');
   if(pv&&!reduce&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)pv.play().catch(function(){});else pv.pause();})},{threshold:.3}).observe(pv);}
 
   // sticky mobile CTA after the hero
