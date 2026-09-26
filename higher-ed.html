@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Extern for Higher Ed · Give every student real work experience, guaranteed</title>
+<meta name="description" content="Extern partners with universities to scale access to real-world experience, mentorship, and job readiness. Guaranteed enrollment, mentor-guided projects with real companies, zero lift for your team.">
+<link rel="icon" href="assets/extern_mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<style>
+/* higher-ed page CSS */
+.tag{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);border-radius:999px;padding:5px 11px;font-size:12.5px;font-weight:600;color:var(--ink2);background:var(--paper);line-height:1.2}
+
+/* hero photo crop */
+.heroArt .photo img{object-position:50% 38%}
+.heroCopy .lead{max-width:600px}
+
+/* partner logo strip */
+.logos{padding:56px 0 8px}
+.logos .inner{flex-direction:column;align-items:center;gap:26px}
+.logos p{max-width:none;text-align:center}
+.logos ul{justify-content:center;gap:34px 40px;width:100%}
+.logos img{mix-blend-mode:multiply;max-width:200px;object-fit:contain}
+.logos img.tall{height:34px}
+.logos img.wide{height:20px}
+
+/* why + what we are not */
+.why .split{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:72px}
+.nots{display:flex;flex-direction:column;gap:14px;width:100%}
+.nots .lab{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.ncard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.ncard .x{width:34px;height:34px;border-radius:50%;background:var(--peach);flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;color:var(--ink);margin-top:2px}
+.ncard .x svg{width:14px;height:14px}
+.ncard h3{font-size:19px}
+.ncard p{font-size:15px;color:var(--ink2);line-height:1.5;margin-top:5px}
+
+/* five steps */
+.g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px}
+.g5 .step h3{font-size:20px}
+
+/* dark band */
+.band{background:var(--deep);color:#fff}
+.band .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:30px}
+.band h2{max-width:1040px;font-size:clamp(36px,4.4vw,66px)}
+.band .fine{color:rgba(255,255,255,.6)}
+
+/* what you get */
+.get{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.get .head{max-width:760px;margin-bottom:48px}
+.gift{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.gcard{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:14px}
+.gcard i{width:42px;height:42px;border-radius:12px;background:var(--green-soft);display:inline-flex;align-items:center;justify-content:center;color:var(--green-tx)}
+.gcard i svg{width:20px;height:20px}
+.gcard h3{font-size:20px}
+.gcard p{color:var(--ink2);font-size:15.5px;line-height:1.5}
+
+/* numbers */
+.nums .statq{margin-top:48px}
+.nums .sq{gap:12px;padding:32px 28px}
+.nums .sq .lab{font-size:16px;margin-top:0}
+
+/* featured */
+.feat .head h2{font-size:clamp(30px,3.2vw,44px)}
+
+/* closing photo crop */
+.close img{object-position:50% 45%}
+
+@media (max-width:1200px){
+  .g5{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:1024px){
+  .gift{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .why .split{grid-template-columns:1fr;gap:36px}
+  .g5{grid-template-columns:1fr;gap:26px}
+  .logos img{max-width:170px}
+  .logos img.tall{height:30px}
+  .logos img.wide{height:16px}
+  .heroArt .photo img{object-position:50% 30%}
+  .cap{display:none}
+  .band h2{font-size:clamp(32px,8.6vw,40px)}
+}
+@media (max-width:600px){
+  .gift{grid-template-columns:1fr}
+  .gcard{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- announcement marquee -->
+<div class="bar" aria-hidden="true">
+  <div class="track" id="marq">
+    <span>Fully remote externships you can start working on today</span><span>Breaking Games</span><span>TruBridge</span><span>Pinterest</span><span>Canva</span><span>Amazon</span><span>Pfizer</span><span>TikTok</span><span>Hydroficient</span><span>No prior experience required</span><span>$0 to start</span>
+  </div>
+</div>
+
+<header class="hero onDark">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html" aria-label="Extern home"><img src="assets/extern_white.svg" alt="Extern"></a>
+      <ul>
+        <li><a href="students.html">Students</a></li>
+        <li><a href="higher-ed.html" aria-current="page">Higher Ed</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="acts">
+        <a class="btn ghost onDark sm" href="https://app.extern.com/sign-in">Log in</a>
+        <a class="btn primary sm" href="https://www.extern.com/higher-ed#contact" data-cta="nav">Pilot with us</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="menu" id="menu">
+      <a href="students.html">Students</a>
+      <a href="higher-ed.html" aria-current="page">Higher Ed</a>
+      <a href="companies.html">Companies</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+      <a href="https://app.extern.com/sign-in">Log in</a>
+    </div>
+
+    <div class="heroGrid" id="top">
+      <div class="heroCopy">
+        <span class="eyebrow" style="color:rgba(255,255,255,.7)">Become a University Partner</span>
+        <h1 class="serif">Give every student real work experience, guaranteed</h1>
+        <p class="lead"><span class="full">Extern partners with universities to scale access to real-world experience, mentorship, and job readiness. Our first pilots launched in Q1 2026, and the Fall 2026 cohort is now enrolling. Join for fall, or start planning a Spring 2027 launch.</span><span class="short">Extern partners with universities to scale access to real-world experience, mentorship, and job readiness. The Fall 2026 cohort is enrolling now. Join for fall, or plan a Spring 2027 launch.</span></p>
+        <div class="row">
+          <a class="btn primary lg" href="https://www.extern.com/higher-ed#contact" data-cta="hero">Pilot with us</a>
+          <a class="btn ghost onDark lg" href="#how">See how it works <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        </div>
+        <div class="trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Enrollment guaranteed</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Remote and mentor-guided</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Zero lift for your team</span>
+        </div>
+      </div>
+      <div class="heroArt">
+        <div class="photo"><img src="assets/universities/hied_photo1.jpg" alt="Graduates in caps and gowns celebrating outside a university building" fetchpriority="high"></div>
+      </div>
+      <div class="bigline serif" aria-hidden="true">
+        <b class="l"><span class="tw">Real work,</span></b>
+        <b class="m"><span class="tw">every student,</span></b>
+        <b class="r"><span class="tw">guaranteed.</span></b>
+      </div>
+      <p class="cap">Every student on your list gets a seat</p>
+    </div>
+  </div>
+</header>
+
+<!-- partner logos -->
+<div class="logos">
+  <div class="wrap inner rv">
+    <p>Our partner customers</p>
+    <ul aria-label="Partner universities and organizations">
+      <li><img src="assets/universities/bcc.png" alt="Bronx Community College"></li>
+      <li><img src="assets/universities/oppnet.svg" alt="The Opportunity Network"></li>
+      <li><img class="tall" src="assets/universities/ie-university.svg" alt="IE University"></li>
+      <li><img class="wide" src="assets/universities/monroe.svg" alt="Monroe University"></li>
+      <li><img class="tall" src="assets/universities/sgb.png" alt="Sandberg Goldberg Bernthal Family Foundation"></li>
+      <li><img src="assets/universities/rutgers.png" alt="Rutgers"></li>
+      <li><img src="assets/universities/mercy-corps.jpg" alt="Mercy Corps"></li>
+      <li><img class="tall" src="assets/universities/dku.png" alt="Duke Kunshan University"></li>
+      <li><img src="assets/universities/leeds.png" alt="Leeds School of Business, University of Colorado Boulder"></li>
+    </ul>
+  </div>
+</div>
+
+<!-- testimonials -->
+<section class="tst" id="stories">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="stack" style="gap:12px;max-width:900px">
+        <span class="eyebrow">What externs say</span>
+        <h2 class="serif grow" style="font-size:clamp(32px,3.6vw,54px)">“The experience I got from externships made the biggest difference in launching my career”</h2>
+      </div>
+      <div class="arrows">
+        <button type="button" id="prev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <span class="cnt" id="cnt">1 of 4</span>
+        <button type="button" id="next" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <div class="rail rv" id="rail">
+      <div class="tcard"><div class="who"><img src="assets/face_devan-horn.jpg" alt=""><div><b>Devan Horn</b><span>Mangusta Capital externship</span></div></div><blockquote>“The externship experience gave me hands-on exposure to real-world investment analysis and sharpened how I present financial insights at a professional level. The company and I stayed in contact and I was later offered the opportunity to join the team and I took it.”</blockquote><p class="now">Currently <b>Venture Capital Analyst intern at Mangusta Capital</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_gevans-gabeau.jpg" alt=""><div><b>Gevans Gabeau</b><span>Finance externship</span></div></div><blockquote>“In my Capital One interview, they asked what I was doing to grow professionally, and I immediately drew back on my externship experience. Everyone wants you to have experience before you can even get an internship, and Extern was what helped me break through that barrier.”</blockquote><p class="now">Currently <b>Incoming Investment Banking Analyst at Lazard</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_khalid-farah.jpg" alt=""><div><b>Khalid Farah</b><span>Finance externship</span></div></div><blockquote>“The project felt real, practical, useful, and using AI made things easier to understand. Overall, it was a good experience that showed me how things actually work.”</blockquote><p class="now">Currently <b>Private Equity Summer Analyst at Ally Equity Partners</b></p></div>
+      <div class="tcard"><div class="who"><img src="assets/face_gabrielle-villagonzalo.jpg" alt=""><div><b>Gabrielle Villagonzalo</b><span>Extern alum</span></div></div><blockquote>“I love how Extern guides their externs. They’re there with you every step of the way. It’s very beginner friendly and it’s also interactive learning that meets you where you’re at.”</blockquote><p class="now">Currently <b>Incoming Operations Summer Intern at Amazon</b></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- why extern, why now + what we are not -->
+<section class="why" id="why">
+  <div class="wrap split top">
+    <div class="stack rv">
+      <span class="eyebrow">Why Extern? Why now?</span>
+      <h2 class="serif grow">Make real work experience the standard, not the exception.</h2>
+      <p class="lead">Every student deserves meaningful access to real-world experience and guidance as they prepare for the future. Extern partners with universities to deliver externships at scale: structured, mentor-guided projects with real companies, open to every student regardless of background, major, or prior experience.</p>
+      <a class="btn primary" href="https://www.extern.com/higher-ed#contact" data-cta="why">Pilot with us</a>
+    </div>
+    <div class="nots rv">
+      <span class="lab">What we are not</span>
+      <div class="ncard"><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><div><h3>Not an internship marketplace</h3><p>No applications, no rejections. You share the list of students and every one of them gets a seat.</p></div></div>
+      <div class="ncard"><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><div><h3>Not a simulation</h3><p>Externs do real, mentor-guided work with real companies and finish with a portfolio piece.</p></div></div>
+      <div class="ncard"><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><div><h3>Not another platform to manage</h3><p>Enrollment, onboarding, tracking and support are all implemented by Extern. Zero lift for your team.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- how it works -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="head stack rv">
+      <span class="eyebrow">How it works</span>
+      <h2 class="serif grow">Five steps from a student list to a portfolio piece.</h2>
+      <p class="lead">You pick who takes part. Extern runs everything else and reports back on every student.</p>
+    </div>
+    <div class="g5 rv">
+      <div class="step"><span class="num">1</span><h3>You choose the students</h3><p>Share a list of students from any program. No applications, no rejections.</p></div>
+      <div class="step"><span class="num">2</span><h3>Every student gets a seat</h3><p>Enrollment is guaranteed.</p></div>
+      <div class="step"><span class="num">3</span><h3>They do real work</h3><p>Remote, mentor-guided, built to fit around work and coursework.</p></div>
+      <div class="step"><span class="num">4</span><h3>They finish with proof</h3><p>Every student ends with a portfolio piece.</p></div>
+      <div class="step"><span class="num">5</span><h3>You see everything</h3><p>Progress data on every student from day one.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- dark band -->
+<section class="band onDark">
+  <div class="wrap rv">
+    <h2 class="serif grow">Join Extern’s university program to enable and empower the next generation of talent.</h2>
+    <a class="btn primary lg" href="https://www.extern.com/higher-ed#contact" data-cta="band">Pilot with us</a>
+    <p class="fine">Tell us about your goals and we will map out what a partnership could look like.</p>
+  </div>
+</section>
+
+<!-- what you get -->
+<section class="get" id="what-you-get">
+  <div class="wrap">
+    <div class="head stack rv">
+      <span class="eyebrow">What you get as a university partner</span>
+      <h2 class="serif grow">Everything a launch needs, run by Extern.</h2>
+    </div>
+    <div class="gift rv">
+      <div class="gcard"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i><h3>Turnkey solution</h3><p>Zero lift for your team. Enrollment, onboarding, tracking and support are all implemented by Extern.</p></div>
+      <div class="gcard"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h5"/></svg></i><h3>Co-branded marketing page</h3><p>A page built for your students, with additional marketing efforts to support the program.</p></div>
+      <div class="gcard"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></i><h3>Dedicated partnership manager</h3><p>Here to support your university rollout and student engagement.</p></div>
+      <div class="gcard"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></i><h3>Custom reporting dashboards</h3><p>Track student participation and outcomes.</p></div>
+      <div class="gcard"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></i><h3>Integration opportunities</h3><p>Bring externships into curriculum or advising programs.</p></div>
+      <div class="gcard"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></i><h3>Proven university playbook</h3><p>A structured launch from kickoff call to end-of-semester report.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- by the numbers -->
+<section class="nums" id="numbers">
+  <div class="wrap">
+    <div class="stack c rv" style="max-width:760px;margin:0 auto">
+      <span class="eyebrow">Extern by the numbers</span>
+      <h2 class="serif grow">Backed by data, powered by mentorship, loved by students.</h2>
+    </div>
+    <div class="statq rv">
+      <div class="sq"><div class="big">80,000+</div><div class="lab">students served, and growing fast</div></div>
+      <div class="sq"><div class="big">74%</div><div class="lab">of externs get hired within 12 months</div></div>
+      <div class="sq"><div class="big">1,200+</div><div class="lab">universities where students are externs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- featured externship -->
+<section class="feat" id="featured">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="stack" style="gap:12px">
+        <span class="eyebrow">Featured externship</span>
+        <h2 class="serif grow">The kind of work your students will do</h2>
+      </div>
+      <a class="btn ghost" href="https://www.extern.com/externships">Browse all externships ↗</a>
+    </div>
+    <div class="live3 rv">
+      <a class="pcard" href="https://www.extern.com/externships" data-cta="card-trubridge">
+        <div class="img"><img src="assets/card_trubridge.jpg" alt="" loading="lazy"><img class="sq" src="assets/sq_trubridge.png" alt="TruBridge"></div>
+        <div class="b">
+          <div class="meta"><span class="tag">Healthcare Analytics</span><span class="tag">8 weeks</span></div>
+          <h3>TruBridge Healthcare Data Analytics</h3>
+          <p>Ask meaningful research questions, collect and clean population-level data, run statistical and correlational analyses, and present findings using AI tools like ChatGPT, Claude, and Gamma.</p>
+        </div>
+      </a>
+      <a class="pcard" href="https://www.extern.com/externships" data-cta="card-breaking">
+        <div class="img"><img src="assets/card_breaking.jpg" alt="" loading="lazy"><img class="sq" src="assets/sq_breaking.png" alt="Breaking Games"></div>
+        <div class="b">
+          <div class="meta"><span class="tag">Data Analytics &amp; Visualization</span><span class="tag">10 weeks</span></div>
+          <h3>Breaking Games E-Commerce Data Analysis &amp; Strategy</h3>
+          <p>What makes one shopper click “buy now” while another abandons their cart? Dig into real marketing data from Google Analytics, Meta Ads, and Shopify to uncover what drives clicks, conversions, and repeat purchases.</p>
+        </div>
+      </a>
+      <a class="pcard" href="https://www.extern.com/externships" data-cta="card-pinterest">
+        <div class="img"><img src="assets/card_pinterest.jpg" alt="" loading="lazy"><img class="sq" src="assets/sq_pinterest.png" alt="Pinterest"></div>
+        <div class="b">
+          <div class="meta"><span class="tag">Consumer Insights</span><span class="tag">6 weeks</span></div>
+          <h3>Pinterest Gen Z Consumer Behavior</h3>
+          <p>Design a real survey using the Jobs-to-be-Done framework, deploy it to Gen Z users in your own network, and build one sharp, evidence-backed insight into an advertiser pitch for Pinterest’s own sales team.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- closing -->
+<section class="close onDark" id="contact">
+  <img src="assets/universities/hied_photo2.jpg" alt="" loading="lazy">
+  <div class="wrap rv">
+    <h2 class="serif grow">Start your university partnership</h2>
+    <p class="lead">Tell us about your goals for the year and we'll map out what a partnership could look like, whether that's joining the Fall 2026 cohort or launching in spring 2027.</p>
+    <a class="btn primary lg" href="https://www.extern.com/higher-ed#contact" data-cta="closing">Pilot with us</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <img src="assets/extern_white.svg" alt="Extern" style="height:28px;width:auto">
+        <p class="tag2">Work experience. Anytime, anywhere.</p>
+        <div class="soc">
+          <a href="https://www.linkedin.com/company/externhq/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="https://www.instagram.com/externhq/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+          <a href="https://www.tiktok.com/@externhq" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+          <a href="https://www.youtube.com/@externhq" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Externships</h4><ul>
+        <li><a href="https://www.extern.com/externships">Explore all externships</a></li>
+        <li><a href="https://www.extern.com/explore/consulting">Consulting</a></li>
+        <li><a href="https://www.extern.com/explore/finance">Finance</a></li>
+        <li><a href="https://www.extern.com/explore/marketing">Marketing</a></li>
+        <li><a href="https://www.extern.com/explore/product">Product</a></li>
+        <li><a href="https://www.extern.com/explore/sales-business-development">Sales &amp; BD</a></li>
+      </ul></div>
+      <div><h4>Resources</h4><ul>
+        <li><a href="https://www.extern.com/blog">Blog</a></li>
+        <li><a href="https://www.extern.com/events">Community events</a></li>
+        <li><a href="https://app.extern.com/sign-up">Apply to be an Extern</a></li>
+        <li><a href="https://www.extern.com/the-edge-newsletter/join">Sign up for the newsletter</a></li>
+        <li><a href="https://intercom.help/externhelp/en">Help Center ↗</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="students.html">Students</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="higher-ed.html">Higher Ed</a></li>
+        <li><a href="about.html">Mission and values</a></li>
+        <li><a href="https://www.extern.com/wall-of-love">Wall of Love</a></li>
+      </ul></div>
+    </div>
+    <div class="bot">
+      <span>© 2026 Extern. All rights reserved.</span>
+      <span><a href="https://www.extern.com/privacy-policy">Privacy policy</a><a href="https://www.extern.com/terms-of-service">Terms of service</a><a href="https://intercom.help/externhelp/en">Help Center</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <div class="t"><b>Become a university partner</b>Guaranteed seats · zero lift for your team</div>
+  <a class="btn primary" href="https://www.extern.com/higher-ed#contact" data-cta="sticky">Pilot with us</a>
+</div>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // marquee: duplicate content once for a seamless loop
+  var m=document.getElementById('marq'); m.innerHTML+=m.innerHTML;
+
+  // mobile menu
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);});
+
+  // reveal on scroll
+  var rv=document.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){rv.forEach(function(e){e.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});rv.forEach(function(e){io.observe(e)});}
+
+  // sticky mobile CTA after the hero
+  var sticky=document.getElementById('sticky'),hero=document.querySelector('.hero');
+  function onScroll(){var r=hero.getBoundingClientRect();sticky.classList.toggle('show',r.bottom<0);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // testimonial rail
+  var rail=document.getElementById('rail'),cards=rail.children,cnt=document.getElementById('cnt');
+  function idx(){var c=cards[0],w=c.offsetWidth+20;return Math.min(cards.length,Math.round(rail.scrollLeft/w)+1)}
+  function upd(){cnt.textContent=idx()+' of '+cards.length}
+  rail.addEventListener('scroll',function(){requestAnimationFrame(upd)});
+  document.getElementById('next').addEventListener('click',function(){rail.scrollBy({left:cards[0].offsetWidth+20,behavior:reduce?'auto':'smooth'})});
+  document.getElementById('prev').addEventListener('click',function(){rail.scrollBy({left:-(cards[0].offsetWidth+20),behavior:reduce?'auto':'smooth'})});
+  upd();
+})();
+</script>
+</body>
+</html>
