@@ -147,8 +147,24 @@ h3{font-size:22px;line-height:1.25;letter-spacing:-.01em}
 .feat .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
 
 /* matcher (conversational questionnaire) */
-.match{background:var(--deep);color:#fff;padding:110px 0}
-.match .intro{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;max-width:820px;margin:0 auto 48px}
+.match{position:fixed;inset:0;z-index:100;background:rgba(14,30,43,.97);color:#fff;overflow-y:auto;overscroll-behavior:contain;padding:56px 0 64px;display:none}
+.match.open{display:block;animation:ovl .3s ease}
+@keyframes ovl{from{opacity:0}to{opacity:1}}
+.match.open .mcard{animation:rise2 .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise2{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+body.locked{overflow:hidden}
+.mclose{position:fixed;top:22px;right:22px;z-index:101;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;display:inline-flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.mclose:hover{background:#fff;color:var(--ink)}
+.mclose svg{width:20px;height:20px}
+.match .intro{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;max-width:820px;margin:0 auto 32px}
+.match .intro h2{font-size:clamp(34px,3.6vw,52px)}
+.tease{background:var(--paper);border-bottom:1px solid var(--line)}
+.tease .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:22px;padding-bottom:22px;flex-wrap:wrap}
+.tease .l{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.tease .l .serif{font-size:clamp(22px,2vw,28px);line-height:1.1}
+.tease .l span.eyebrow{color:var(--green-tx)}
+.tease .r{display:flex;align-items:center;gap:14px}
+.tease .r .fine{max-width:260px}
 .match .intro .lead{color:rgba(255,255,255,.78)}
 .mcard{background:var(--cream);color:var(--ink);border-radius:32px;display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);overflow:hidden;box-shadow:0 60px 120px -60px rgba(0,0,0,.6);min-height:620px}
 .mrail{background:var(--cream2);padding:36px 32px;display:flex;flex-direction:column;gap:18px;border-right:1px solid var(--line)}
@@ -321,7 +337,12 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .bigline .m{padding-left:18%}
   .cap{right:20px;bottom:8px}
   .split,.fw .split,.faq .split,.band .wrap{grid-template-columns:1fr;gap:36px}
-  .match{padding:72px 0}
+  .match{padding:76px 0 40px}
+  .mclose{top:14px;right:14px;width:42px;height:42px}
+  .tease .wrap{padding-top:18px;padding-bottom:18px}
+  .tease .r{width:100%;justify-content:space-between}
+  .tease .r .fine{display:none}
+  .tease .btn{width:100%}
   .mcard{grid-template-columns:1fr;border-radius:24px;min-height:0}
   .mrail{border-right:0;border-bottom:1px solid var(--line);padding:16px 20px;gap:10px}
   .mrail .hint,.mrail .mb.q,.mrail .who,.mrail .mget{display:none}
@@ -432,6 +453,14 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   </div>
 </header>
 
+<!-- matcher teaser -->
+<div class="tease">
+  <div class="wrap rv">
+    <div class="l"><span class="eyebrow">Not sure where to start?</span><p class="serif">Three questions. Three externships picked for you.</p></div>
+    <div class="r"><p class="fine">About a minute. No account needed to see your matches.</p><a class="btn ink" href="#match" data-cta="tease" style="background:var(--ink);color:#fff">Find my match</a></div>
+  </div>
+</div>
+
 <!-- logo strip -->
 <div class="logos">
   <div class="wrap inner rv">
@@ -485,58 +514,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
       <div class="step"><span class="num">2</span><h3>Work on a real business challenge</h3><p>Solve an actual challenge the company faces, not a textbook exercise.</p></div>
       <div class="step"><span class="num">3</span><h3>Get guidance and support</h3><p>Learning materials, templates, feedback, and milestones to help you deliver.</p></div>
       <div class="step"><span class="num">4</span><h3>Finish with real output</h3><p>Add your completed work to your resume and LinkedIn, and showcase it in interviews.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- matcher -->
-<section class="match onDark" id="match">
-  <div class="wrap">
-    <div class="intro rv">
-      <span class="eyebrow" style="color:var(--green)">Find your match · about a minute</span>
-      <h2 class="serif">Tell us a little. We’ll show you where to start.</h2>
-      <p class="lead">Three quick questions. At the end you get three externships picked for you, not a form to fill.</p>
-    </div>
-    <div class="mcard rv" id="mcard">
-      <aside class="mrail" id="mrail" aria-live="polite">
-        <div class="who"><img src="assets/extern_mark.svg" alt="">Extern</div>
-        <div class="mb q">Hi. Three quick questions and we’ll hand you three externships worth your first week. Nothing here is a commitment.</div>
-        <ul class="mget"><li>Three externships picked for you</li><li>About a minute, no account needed</li><li>Your picks carry into sign-up</li></ul>
-        <p class="hint">Your picks travel with you when you sign up. No card, no experience required.</p>
-      </aside>
-      <div class="mmain">
-        <div class="mtop"><span id="mcount">1 of 3</span><div class="mprog" id="mprog"><i class="on"></i><i></i><i></i></div></div>
-
-        <div class="mstep on" data-step="0">
-          <h3>First, what kind of work do you want to get your hands on?</h3>
-          <p class="sub">Pick up to three. We pull projects from these fields.</p>
-          <div class="opts" data-q="focus" data-max="3"></div>
-        </div>
-        <div class="mstep" data-step="1">
-          <h3>Got it. What do you want to walk away with?</h3>
-          <p class="sub">Pick up to three. This decides which projects we surface first.</p>
-          <div class="opts" data-q="goal" data-max="3"></div>
-        </div>
-        <div class="mstep" data-step="2">
-          <h3>Last one. Where are you right now?</h3>
-          <p class="sub">One pick. We match the level of the project, not just the topic.</p>
-          <div class="opts single" data-q="stage" data-max="1"></div>
-        </div>
-        <div class="mstep" data-step="3">
-          <h3 id="rtitle">Here’s where we’d start you.</h3>
-          <div class="mecho" id="mecho"></div>
-          <div class="mres" id="mres"></div>
-          <p class="sub">All three are remote, part-time and open now. Sign up free to open any of them.</p>
-        </div>
-
-        <div class="mfoot">
-          <button type="button" class="back" id="mback" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
-          <div class="right">
-            <span class="cue" id="mcue">Pick at least one to continue</span>
-            <button type="button" class="btn primary next" id="mnext" disabled><span>Continue </span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -738,6 +715,59 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   </div>
 </footer>
 
+<!-- matcher -->
+<section class="match onDark" id="match" role="dialog" aria-modal="true" aria-labelledby="mtitle" hidden>
+  <button type="button" class="mclose" id="mclose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow" style="color:var(--green)">Find your match · about a minute</span>
+      <h2 class="serif" id="mtitle">Tell us a little. We’ll show you where to start.</h2>
+      <p class="lead">Three quick questions. At the end you get three externships picked for you, not a form to fill.</p>
+    </div>
+    <div class="mcard" id="mcard" tabindex="-1" style="outline:none">
+      <aside class="mrail" id="mrail" aria-live="polite">
+        <div class="who"><img src="assets/extern_mark.svg" alt="">Extern</div>
+        <div class="mb q">Hi. Three quick questions and we’ll hand you three externships worth your first week. Nothing here is a commitment.</div>
+        <ul class="mget"><li>Three externships picked for you</li><li>About a minute, no account needed</li><li>Your picks carry into sign-up</li></ul>
+        <p class="hint">Your picks travel with you when you sign up. No card, no experience required.</p>
+      </aside>
+      <div class="mmain">
+        <div class="mtop"><span id="mcount">1 of 3</span><div class="mprog" id="mprog"><i class="on"></i><i></i><i></i></div></div>
+
+        <div class="mstep on" data-step="0">
+          <h3>First, what kind of work do you want to get your hands on?</h3>
+          <p class="sub">Pick up to three. We pull projects from these fields.</p>
+          <div class="opts" data-q="focus" data-max="3"></div>
+        </div>
+        <div class="mstep" data-step="1">
+          <h3>Got it. What do you want to walk away with?</h3>
+          <p class="sub">Pick up to three. This decides which projects we surface first.</p>
+          <div class="opts" data-q="goal" data-max="3"></div>
+        </div>
+        <div class="mstep" data-step="2">
+          <h3>Last one. Where are you right now?</h3>
+          <p class="sub">One pick. We match the level of the project, not just the topic.</p>
+          <div class="opts single" data-q="stage" data-max="1"></div>
+        </div>
+        <div class="mstep" data-step="3">
+          <h3 id="rtitle">Here’s where we’d start you.</h3>
+          <div class="mecho" id="mecho"></div>
+          <div class="mres" id="mres"></div>
+          <p class="sub">All three are remote, part-time and open now. Sign up free to open any of them.</p>
+        </div>
+
+        <div class="mfoot">
+          <button type="button" class="back" id="mback" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+          <div class="right">
+            <span class="cue" id="mcue">Pick at least one to continue</span>
+            <button type="button" class="btn primary next" id="mnext" disabled><span>Continue </span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="sticky" id="sticky">
   <div class="t"><b>Real projects that get you hired</b>$0 to start · no experience required</div>
   <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="sticky">Sign Up</a>
@@ -847,7 +877,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     var r=document.querySelector('.mfoot .right .restart'); if(r)r.remove();
     if(i<3){mcount.textContent=(i+1)+' of 3';mnext.hidden=false;mcue.hidden=false;mnext.firstChild.textContent=i===2?'Show my matches ':'Continue ';cue();}
     else{mcount.textContent='Your matches';mnext.hidden=true;mcue.hidden=true;results();}
-    if(mcard.getBoundingClientRect().top<0)mcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    if(mcard.getBoundingClientRect().top<0)overlay.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   }
   function results(){
     var stageIdx=Q.stage.indexOf(ans.stage[0]),goalIdx=ans.goal.map(function(g){return Q.goal.indexOf(g)});
@@ -859,6 +889,14 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     restart.addEventListener('click',function(){ans={focus:[],goal:[],stage:[]};document.querySelectorAll('.opts button').forEach(function(b){b.classList.remove('on');b.disabled=false;b.setAttribute('aria-pressed','false')});mrail.querySelectorAll('[data-echo]').forEach(function(e){e.remove()});go(0);});
     document.querySelector('.mfoot .right').appendChild(restart);
   }
+  var overlay=document.getElementById('match'),lastFocus=null;
+  function openM(){lastFocus=document.activeElement;overlay.hidden=false;overlay.classList.add('open');document.body.classList.add('locked');overlay.scrollTop=0;setTimeout(function(){mcard.focus({preventScroll:true})},50);if(history.replaceState)history.replaceState(null,'','#match');}
+  function closeM(){overlay.classList.remove('open');overlay.hidden=true;document.body.classList.remove('locked');if(history.replaceState)history.replaceState(null,'',location.pathname+location.search);if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  document.querySelectorAll('a[href="#match"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openM();})});
+  document.getElementById('mclose').addEventListener('click',closeM);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeM();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('open'))closeM();});
+  if(location.hash==='#match')openM();
   mnext.addEventListener('click',function(){if(mnext.disabled)return;railEcho(ORDER[step]);go(step+1)});
   mback.addEventListener('click',function(){go(step-1)});
   cue();
