@@ -427,7 +427,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
         <p class="lead">Work on projects from Fortune 1000 brands and startups that help you stand out in the job market. Remote, on your schedule, with a company brief and a team behind you.</p>
         <div class="row">
           <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="hero">Sign Up</a>
-          <a class="btn ghost onDark lg" href="#match">Find my match</a>
+          <a class="btn ghost onDark lg" href="#match">Find my externship <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
         </div>
         <div class="trust">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No prior experience required</span>
@@ -871,8 +871,8 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     prog.forEach(function(p,k){p.classList.toggle('done',k<i);p.classList.toggle('on',k===i)});
     mback.hidden=i===0;
     var r=document.querySelector('.mfoot .right .restart'); if(r)r.remove();
-    if(i<3){mcount.textContent=(i+1)+' of 3';mnext.hidden=false;mcue.hidden=false;mnext.firstChild.textContent=i===2?'Show my matches ':'Continue ';cue();}
-    else{mcount.textContent='Your matches';mnext.hidden=true;mcue.hidden=true;results();}
+    if(i<3){mcount.textContent=(i+1)+' of 3';mnext.hidden=false;mcue.hidden=false;mnext.firstChild.textContent=i===2?'Show my externships ':'Continue ';cue();}
+    else{mcount.textContent='Your externships';mnext.hidden=true;mcue.hidden=true;results();}
     if(mcard.getBoundingClientRect().top<0)mcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
   }
   function results(){
