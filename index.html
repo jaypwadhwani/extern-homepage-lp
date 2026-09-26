@@ -235,16 +235,6 @@ h3{font-size:22px;line-height:1.25;letter-spacing:-.01em}
 .pfl li b{display:block;font-size:17px;font-weight:600;line-height:1.3}
 .pfl li span{display:block;font-size:15px;color:var(--ink2);line-height:1.5;margin-top:4px}
 
-/* trial band */
-.band{background:var(--green-soft);position:relative;overflow:hidden}
-.band .wrap{max-width:860px;position:relative;z-index:1}
-.band h2{font-size:clamp(40px,4.6vw,64px)}
-.band .cta{display:flex;flex-direction:column;gap:14px;align-items:center;margin-top:8px}
-.band .stack.c{align-items:center}
-.band .terms{text-align:center}
-.band .bigmark{position:absolute;right:-40px;bottom:-110px;width:460px;opacity:.07;pointer-events:none}
-
-
 /* outcomes */
 .out .cloud{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:980px;margin:36px auto 0}
 .out .cloud span{border:1px solid var(--line2);border-radius:999px;padding:10px 16px;font-size:15px;color:var(--ink2);background:var(--paper)}
@@ -334,7 +324,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .heroArt{grid-column:1;grid-row:2}
   .bigline{position:absolute;left:0;right:0;bottom:26px;grid-column:1;padding:0 20px;font-size:clamp(52px,15vw,74px)}
   .cap{right:20px;bottom:8px}
-  .split,.fw .split,.faq .split,.pf .split,.band .wrap{grid-template-columns:1fr;gap:36px}
+  .split,.fw .split,.faq .split,.pf .split{grid-template-columns:1fr;gap:36px}
   .match{padding:40px 0 56px}
   .mcard{min-height:0}
   .mmain{padding:24px 20px 22px;gap:22px}
@@ -356,7 +346,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .jhead{flex-direction:column-reverse;gap:12px}
   .jhead .arrows{align-self:flex-end}
   .jtabs button{min-width:132px;font-size:13.5px}
-  .band .bigmark{display:none}
   .pf .split{gap:36px}
   .browser .top{height:38px}
   .tcard{flex-basis:300px;min-height:0}
@@ -611,22 +600,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
         <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i><div><b>Customize your portfolio</b><span>Add projects and experience from outside Extern too. It stays live even after you leave.</span></div></li>
       </ul>
       <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="portfolio">Sign Up</a>
-    </div>
-  </div>
-</section>
-
-<!-- trial band -->
-<section class="band" id="start">
-  <img class="bigmark" src="assets/extern_mark.svg" alt="" aria-hidden="true">
-  <div class="wrap">
-    <div class="stack c rv">
-      <span class="eyebrow" style="color:var(--green-tx)">$0 today</span>
-      <h2 class="serif">Start free. Keep the portfolio for good.</h2>
-      <p class="lead">Sign up in a minute, pick a project, and start with a 7-day free trial. Guaranteed acceptance to all externships and projects. Every finished deliverable lands in your portfolio, and it stays live even after you leave Extern.</p>
-      <div class="cta">
-        <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="band">Sign Up</a>
-        <p class="terms"><b>$0 today.</b> Start with a 7-day free trial, then choose the plan that best fits your goals.</p>
-      </div>
+      <p class="terms"><b>$0 today.</b> Start with a 7-day free trial, then choose the plan that best fits your goals.</p>
     </div>
   </div>
 </section>
@@ -718,6 +692,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     <h2 class="serif">Ready to find your externship?</h2>
     <p class="lead">Sign up free, pick a project, and start doing work you can show. Your first 7 days are on us.</p>
     <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="closing">Sign Up</a>
+    <p class="terms" style="color:rgba(255,255,255,.85)"><b style="color:#fff">$0 today.</b> Start with a 7-day free trial, then choose the plan that best fits your goals.</p>
   </div>
 </section>
 
