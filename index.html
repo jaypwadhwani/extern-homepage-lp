@@ -80,6 +80,7 @@ h3{font-size:22px;line-height:1.25;letter-spacing:-.01em}
 .heroGrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:auto auto;column-gap:40px;align-items:start;padding:40px 0 0;position:relative}
 .heroCopy{display:flex;flex-direction:column;gap:26px;padding-bottom:36px;position:relative;z-index:2;grid-column:1;grid-row:1}
 .heroCopy .lead{color:rgba(255,255,255,.82);max-width:560px;font-size:clamp(17px,1.4vw,21px)}
+.heroCopy .lead .short{display:none}
 .heroCopy .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .trust{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:rgba(255,255,255,.8);font-weight:500}
 .trust span{display:inline-flex;gap:8px;align-items:center}
@@ -301,6 +302,15 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
 /* sticky mobile */
 .sticky{display:none}
 
+/* scroll-driven headline grow */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion:no-preference){
+    .grow{animation:grow linear both;animation-timeline:view();animation-range:entry 0% entry 70%;transform-origin:left bottom}
+    .stack.c .grow,.close .grow{transform-origin:center bottom}
+    @keyframes grow{from{opacity:.25;transform:scale(.9) translateY(14px)}to{opacity:1;transform:none}}
+  }
+}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
@@ -316,9 +326,15 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .nav ul{display:none}
   .nav .acts .ghost{display:none}
   .burger{display:inline-flex}
-  .heroGrid{grid-template-columns:1fr;gap:0;padding-top:20px}
-  .heroCopy{padding-bottom:36px}
-  .heroArt{height:460px;margin:0 -24px}
+  .heroGrid{grid-template-columns:1fr;gap:0;padding-top:12px}
+  .heroCopy{padding-bottom:26px;gap:18px}
+  .heroCopy .lead .full{display:none}.heroCopy .lead .short{display:inline}
+  .heroCopy .lead{font-size:17px}
+  .heroCopy .row{flex-direction:column;align-items:stretch;gap:10px}
+  .heroCopy .row .btn{width:100%}
+  .heroCopy .row .btn.ghost{height:50px}
+  .trust{gap:6px 14px;font-size:13px}
+  .heroArt{height:420px;margin:0 -28px}
   .heroArt .photo{inset:0;border-radius:24px 24px 0 0}
   .heroArt .photo img{object-position:55% 30%}
   .heroArt{grid-column:1;grid-row:2}
@@ -349,6 +365,12 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   .pf .split{gap:36px}
   .browser .top{height:38px}
   .tcard{flex-basis:300px;min-height:0}
+  .live3{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:14px;margin:22px -28px 0;padding:0 28px 8px}
+  .live3::-webkit-scrollbar{display:none}
+  .live3 .pcard{flex:0 0 82%;scroll-snap-align:start}
+  .out .cloud{display:grid;grid-auto-flow:column;grid-template-rows:repeat(3,auto);gap:8px;justify-content:start;overflow-x:auto;scrollbar-width:none;margin:28px -28px 0;padding:0 28px 8px;max-width:none}
+  .out .cloud::-webkit-scrollbar{display:none}
+  .out .cloud span{white-space:nowrap;font-size:14px;padding:9px 14px}
   .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(246,245,240,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);gap:12px;align-items:center;justify-content:space-between;transform:translateY(110%);transition:transform .3s}
   .sticky.show{transform:none}
   .sticky .t{font-size:13px;color:var(--ink2);line-height:1.3}
@@ -395,7 +417,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
       </ul>
       <div class="acts">
         <a class="btn ghost onDark sm" href="https://app.extern.com/sign-in">Log in</a>
-        <a class="btn primary sm" href="https://app.extern.com/sign-up" data-cta="nav">Sign Up</a>
+        <a class="btn primary sm" href="https://app.extern.com/sign-up" data-cta="nav">Sign Up · $0</a>
         <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
@@ -413,15 +435,15 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     <div class="heroGrid" id="top">
       <div class="heroCopy">
         <h1 class="serif">Real-world projects that get you hired.</h1>
-        <p class="lead">Work on projects from Fortune 1000 brands and startups that help you stand out in the job market. Remote, on your schedule, with a company brief and a team behind you.</p>
+        <p class="lead"><span class="full">Work on projects from Fortune 1000 brands and startups that help you stand out in the job market. Remote, on your schedule, with a company brief and a team behind you.</span><span class="short">Work on projects from Fortune 1000 brands and startups. Remote, on your schedule, with a team behind you.</span></p>
         <div class="row">
-          <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="hero">Sign Up</a>
+          <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="hero">Sign Up · $0 to start</a>
           <a class="btn ghost onDark lg" href="#match">Find my externship <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
         </div>
         <div class="trust">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No prior experience required</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>74% hired within 12 months</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>$0 to start</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Remote, on your schedule</span>
         </div>
       </div>
       <div class="heroArt">
@@ -506,9 +528,9 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   <div class="wrap split">
     <div class="stack rv">
       <span class="eyebrow">How it starts</span>
-      <h2 class="serif">Your first week at Extern</h2>
+      <h2 class="serif grow">Your first week at Extern</h2>
       <p class="lead">Real projects. Real support.<br>A portfolio to prove it.</p>
-      <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="first-week">Sign Up</a>
+      <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="first-week">Sign Up · $0 to start</a>
     </div>
     <div class="jcard rv" id="journey">
       <div class="jhead">
@@ -529,7 +551,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   <div class="wrap">
     <div class="head stack rv">
       <span class="eyebrow">How it works</span>
-      <h2 class="serif">Real company. Real challenge. Work you can show.</h2>
+      <h2 class="serif grow">Real company. Real challenge. Work you can show.</h2>
       <p class="lead">Each project is with a real company, centered on a real business challenge, and designed so you finish with work you can show in interviews and on your resume.</p>
     </div>
     <div class="g4 rv">
@@ -547,7 +569,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     <div class="head rv">
       <div class="stack" style="gap:12px">
         <span class="tag live">Live now</span>
-        <h2 class="serif" style="font-size:clamp(30px,3.2vw,44px)">Externships you can start working on today</h2>
+        <h2 class="serif grow" style="font-size:clamp(30px,3.2vw,44px)">Externships you can start working on today</h2>
       </div>
       <a class="btn ghost" href="https://www.extern.com/externships">Browse all externships ↗</a>
     </div>
@@ -592,14 +614,14 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     </div>
     <div class="stack rv">
       <span class="tag b">Your work, all in one place</span>
-      <h2 class="serif">Build a portfolio while you work</h2>
+      <h2 class="serif grow">Build a portfolio while you work</h2>
       <p class="lead">Shareable, customizable and up to date. Your portfolio updates as you complete projects, giving you tangible proof of experience to share with recruiters and employers.</p>
       <ul class="pfl">
         <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i><div><b>Built around real work</b><span>Showcase the projects, skills, and experience you gain through your externships.</span></div></li>
         <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i><div><b>Share with recruiters and employers</b><span>Stand out in the job market by showing what you’ve actually worked on.</span></div></li>
         <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i><div><b>Customize your portfolio</b><span>Add projects and experience from outside Extern too. It stays live even after you leave.</span></div></li>
       </ul>
-      <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="portfolio">Sign Up</a>
+      <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="portfolio">Sign Up · $0 to start</a>
       <p class="terms"><b>$0 today.</b> Start with a 7-day free trial, then choose the plan that best fits your goals.</p>
     </div>
   </div>
@@ -610,7 +632,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   <div class="wrap">
     <div class="stack c rv" style="max-width:760px;margin:0 auto">
       <span class="eyebrow">Where externs went next</span>
-      <h2 class="serif">Externs now at</h2>
+      <h2 class="serif grow">Externs now at</h2>
     </div>
     <div class="cloud rv" aria-label="Roles externs went on to hold">
       <span><b>Lazard</b> · Investment Banking Analyst</span><span><b>Goldman Sachs</b> · Summer Analyst</span><span><b>Microsoft</b> · Analyst</span><span><b>Morgan Stanley</b> · Operations Summer Analyst</span><span><b>HSBC</b> · Summer Analyst</span><span><b>Palantir</b> · Deployment Strategist</span><span><b>JP Morgan</b> · Summer Analyst</span><span><b>BlackRock</b> · Marketing Analyst</span><span><b>Pfizer</b> · Commercial Analytics Intern</span><span><b>Amazon</b> · Operations Summer Intern</span><span><b>McDonald’s</b> · Global Technology Intern</span><span><b>Nintendo</b> · Social Media Marketing Intern</span><span><b>Bloomberg</b> · Media Intern</span><span><b>PwC</b> · Management Consulting Intern</span><span><b>BMW</b> · Intern</span><span><b>AT&amp;T</b> · Data Analytics Intern</span><span><b>EY</b> · Structured Finance Intern</span><span><b>Colgate</b> · Intern</span><span><b>Rolls-Royce</b> · Government Property Manager</span><span><b>McLaren Racing</b> · Intern</span><span><b>Fox</b> · Experiences &amp; Design Intern</span><span><b>Mangusta Capital</b> · VC Analyst Intern</span>
@@ -641,7 +663,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     <div class="head rv">
       <div class="stack" style="gap:12px">
         <span class="eyebrow">Wall of love</span>
-        <h2 class="serif">Hear from someone who’s been in your shoes</h2>
+        <h2 class="serif grow">Hear from someone who’s been in your shoes</h2>
       </div>
       <div class="arrows">
         <button type="button" id="prev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
@@ -671,7 +693,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   <div class="wrap split">
     <div class="stack rv">
       <span class="eyebrow">Questions we get all the time</span>
-      <h2 class="serif">Frequently asked questions</h2>
+      <h2 class="serif grow">Frequently asked questions</h2>
       <p class="lead">Still curious? The <a href="https://intercom.help/externhelp/en" style="text-decoration:underline">Help Center</a> has the long answers.</p>
     </div>
     <div class="acc rv">
@@ -689,9 +711,9 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
 <section class="close onDark">
   <img src="assets/step_do_the_work.jpg" alt="" loading="lazy">
   <div class="wrap rv">
-    <h2 class="serif">Ready to find your externship?</h2>
+    <h2 class="serif grow">Ready to find your externship?</h2>
     <p class="lead">Sign up free, pick a project, and start doing work you can show. Your first 7 days are on us.</p>
-    <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="closing">Sign Up</a>
+    <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="closing">Sign Up · $0 to start</a>
     <p class="terms" style="color:rgba(255,255,255,.85)"><b style="color:#fff">$0 today.</b> Start with a 7-day free trial, then choose the plan that best fits your goals.</p>
   </div>
 </section>
@@ -741,7 +763,7 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
 
 <div class="sticky" id="sticky">
   <div class="t"><b>Real projects that get you hired</b>$0 to start · no experience required</div>
-  <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="sticky">Sign Up</a>
+  <a class="btn primary" href="https://app.extern.com/sign-up" data-cta="sticky">Sign Up · $0</a>
 </div>
 
 <script>
