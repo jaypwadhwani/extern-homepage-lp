@@ -846,6 +846,9 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
     'Real work I can talk about in interviews':'interviews','Recognizable company names on my resume':'names','One specific skill, practiced for real':'skill','A first look at a new field':'newfield','A professional certificate':'certificate','Structured feedback on my work':'feedback',
     'Little work experience so far':'starting','Some experience, but my career hasn\u2019t really started':'early','Started my career, thinking about a change':'switching','Established, coming back after a break':'returning','Firmly established in my career':'established'};
   function codes(list){return list.map(function(l){return CODE[l]||''}).filter(Boolean).join(',')}
+  // The visitor's own attribution, forwarded as-is: standard utm_* plus the ad click ids the app already allowlists.
+  var ATTR=/^(utm_[a-z_]+|gclid|gclsrc|gbraid|wbraid|dclid|fbclid|ttclid|msclkid|li_fat_id|twclid|epik)$/i;
+  function attribution(){var out=[];try{new URLSearchParams(location.search).forEach(function(v,k){if(ATTR.test(k)&&v)out.push(encodeURIComponent(k)+'='+encodeURIComponent(v))})}catch(e){}return out.length?out.join('&')+'&':''}
   var ans={focus:[],goal:[],stage:[]},step=0,ORDER=['focus','goal','stage'];
   var steps=[].slice.call(document.querySelectorAll('.mstep')),prog=[].slice.call(document.querySelectorAll('#mprog i')),mcount=document.getElementById('mcount'),mnext=document.getElementById('mnext'),mback=document.getElementById('mback'),mcue=document.getElementById('mcue'),mrail=document.getElementById('mrail'),mcard=document.getElementById('mcard');
   var CHECK='<i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>';
@@ -888,10 +891,11 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
   function results(){
     var stageIdx=Q.stage.indexOf(ans.stage[0]),goalIdx=ans.goal.map(function(g){return Q.goal.indexOf(g)});
     var scored=PROG.map(function(p,i){var f=p.focus.filter(function(x){return ans.focus.indexOf(x)>-1}).length;var g=p.gives.filter(function(x){return goalIdx.indexOf(x)>-1}).length;return {p:p,sc:f*3+g+(p.adv?(stageIdx>=2?1:-1):0),i:i}}).sort(function(a,b){return b.sc-a.sc||a.i-b.i}).slice(0,3);
-    // Hand-off to app.extern.com/sign-up: the campaign tag switches the sign-up page into its matcher layout; answers
-    // travel as short codes (CODE, mirrored in the app's matcher-arrival.ts), picks as our slugs, nothing personal.
+    // Hand-off to app.extern.com/sign-up: `handoff=homepage_match` switches the sign-up page into its matcher layout;
+    // answers travel as short codes (CODE, mirrored in the app's matcher-arrival.ts), picks as our slugs, nothing personal.
+    // No utm_* of our own: whatever attribution the visitor arrived with (an ad's utm_*, click ids) rides through untouched.
     var picks=scored.map(function(x){return x.p.slug}).join(',');
-    var params='?utm_source=extern_homepage&utm_medium=matcher&utm_campaign=homepage_match&focus='+codes(ans.focus)+'&goal='+codes(ans.goal)+'&stage='+codes(ans.stage)+'&picks='+picks;
+    var params='?'+attribution()+'handoff=homepage_match&focus='+codes(ans.focus)+'&goal='+codes(ans.goal)+'&stage='+codes(ans.stage)+'&picks='+picks;
     document.getElementById('mecho').innerHTML='Based on '+ans.focus.map(function(a){return '<span>'+a+'</span>'}).join('')+' and wanting '+ans.goal.map(function(a){return '<span>'+a.charAt(0).toLowerCase()+a.slice(1)+'</span>'}).join('');
     document.getElementById('mres').innerHTML=scored.map(function(x,k){var m=x.p.focus.filter(function(f){return ans.focus.indexOf(f)>-1});return '<div class="rcard'+(k===0?' top':'')+'">'+(k===0?'<span class="pick">Top pick</span>':'')+'<img src="'+x.p.logo+'" alt="'+x.p.co+'"><h4>'+x.p.title+'</h4><div class="meta">'+x.p.co+' · '+x.p.weeks+' · Remote</div><p class="why">'+(m.length?'<b>Matches '+m.join(' and ')+'.</b> ':'')+x.p.why+'</p><a class="btn primary" href="https://app.extern.com/sign-up'+params+'&program='+x.p.slug+'" data-cta="match-'+x.p.slug+'">Learn More</a></div>'}).join('');
     var restart=document.createElement('button');restart.type='button';restart.className='back restart';restart.textContent='Start over';
