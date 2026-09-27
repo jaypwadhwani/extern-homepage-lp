@@ -9,6 +9,8 @@
   --r:22px;--rs:14px;--wrapmax:1360px;
 }
 @media (min-width:1800px){:root{--wrapmax:1560px}}
+/* Desktop renders at 110%: Jay picked this scale in Chrome (2026-09-27). Phones keep 100%. */
+@media (min-width:948px){html{zoom:1.1}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
