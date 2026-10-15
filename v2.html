@@ -868,7 +868,7 @@ body.pins .pin{display:flex}
   <span class="pin" data-n="2">2</span>
 </div>
 
-<button type="button" class="chgbtn" id="chgbtn" aria-expanded="false">What changed <b>7</b></button>
+<button type="button" class="chgbtn" id="chgbtn" aria-expanded="false">What changed <b>8</b></button>
 <aside class="chg" id="chg" hidden>
   <div class="chgh"><b>Matcher v2 vs today’s matcher arm</b><button type="button" id="chgx" aria-label="Close">×</button></div>
   <ol>
@@ -878,6 +878,7 @@ body.pins .pin{display:flex}
     <li><b>One primary CTA on results.</b> Three picks in one card style. The top pick leads with “Start with [company] · $0”. The other two get a small “Open” button.</li>
     <li><b>“Or open all three”</b> as a link under the list. Sign up without choosing, top pick carried as the default.</li>
     <li><b>Phone results stack vertically,</b> top pick first. No swipe rail.</li>
+    <li><b>Answers advance on their own.</b> The single-pick question moves on as soon as you tap. The two pick-up-to-three questions move on when the third pick lands. Continue stays for one or two picks.</li>
     <li><b>Not visible here:</b> fix the Canva and Pinterest catalog fallback, check the LinkedIn, Instagram and TikTok in-app browsers, add per-question tracking.</li>
   </ol>
   <p><b>Oct 15 review:</b> no “Find my externship” button anywhere, the card itself is on the page on phone too, all three questions stay and the counter reads “1 of 3” like today.</p>
@@ -972,18 +973,22 @@ body.pins .pin{display:flex}
         else if(ans[q].length<max){b.classList.add('on');b.setAttribute('aria-pressed','true');ans[q].push(label)}
         [].slice.call(box.children).forEach(function(x){x.disabled=max>1&&ans[q].length>=max&&!x.classList.contains('on')});
         cue();
+        // a single-pick answer moves on by itself; a multi-pick question moves on once the third pick lands, Continue covers one or two picks
+        if(max===1||ans[q].length>=max)autoNext();
       });
       box.appendChild(b);
     });
   });
+  var autoT=null;
+  function autoNext(){var at=step;clearTimeout(autoT);autoT=setTimeout(function(){if(step===at&&!mnext.disabled)go(at+1)},reduce?0:380)}
   function cue(){
     var q=ORDER[step]; if(!q)return;
     var n=ans[q].length,max=+document.querySelector('.opts[data-q="'+q+'"]').dataset.max;
     mnext.disabled=n===0;
-    mcue.textContent=n===0?(max===1?'Pick one to see your externships':'Pick at least one to continue'):(max===1?'Nice.':(n+' of '+max+' picked'));
+    mcue.textContent=n===0?(max===1?'Pick one to see your externships':'Pick up to three'):(max===1?'Nice.':(n+' of '+max+' picked'));
   }
   function go(i){
-    step=i;
+    clearTimeout(autoT);step=i;
     steps.forEach(function(st,k){st.classList.toggle('on',k===i)});
     prog.forEach(function(p,k){p.classList.toggle('done',k<i);p.classList.toggle('on',k===i)});
     mback.hidden=i===0;
