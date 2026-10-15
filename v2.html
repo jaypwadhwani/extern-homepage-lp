@@ -484,7 +484,6 @@ body.pins .pin{display:flex}
 @media (max-width:860px){
   .heroGrid{grid-template-columns:1fr;padding:12px 0 28px;gap:18px}
   .heroCopy{grid-row:1}
-  .heroCopy .row .btn.ghost{display:none}
   .heroMatch{grid-column:1;grid-row:2}
   .mstart{display:flex;flex-direction:column;gap:10px;width:100%;text-align:left;background:var(--cream);color:var(--ink);border:0;border-radius:22px;padding:18px 18px 16px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);font:inherit}
   .mstart .who{display:flex;gap:8px;align-items:center;font-size:12.5px;font-weight:600;color:var(--muted)}
@@ -555,8 +554,6 @@ body.pins .pin{display:flex}
         <p class="lead"><span class="full">Work on projects from Fortune 1000 brands and startups that help you stand out in the job market. Remote, on your schedule, with a company brief and a team behind you.</span><span class="short">Work on projects from Fortune 1000 brands and startups. Remote, on your schedule, with a team behind you.</span></p>
         <div class="row">
           <a class="btn primary lg" href="https://app.extern.com/sign-up" data-cta="hero">Sign Up · $0 to start</a>
-          <a class="btn ghost onDark lg" href="#match" data-open-matcher data-cta="hero-match">Find my externship <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          <span class="pin" data-n="2">2</span>
         </div>
         <div class="trust">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No prior experience required</span>
@@ -570,30 +567,35 @@ body.pins .pin{display:flex}
         <button type="button" class="mstart" data-open-matcher data-cta="hero-start">
           <span class="who"><img src="assets/extern_mark.svg" alt="">Extern</span>
           <b>Find your externship</b>
-          <span>Two quick questions, about a minute. See your three picks before you make an account.</span>
+          <span>Three quick questions. See your three picks before you make an account.</span>
           <span class="btn primary">Start</span>
         </button>
         <div class="hcard" id="mcard" role="region" aria-label="Find your externship">
           <div class="mmain">
-            <div class="mtop"><span id="mcount">Question 1 of 2 · about a minute</span><div class="mprog" id="mprog"><i class="on"></i><i></i></div><button type="button" class="mclose" id="mclose" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><span class="pin" data-n="7">7</span></div>
+            <div class="mtop"><span id="mcount">1 of 3</span><div class="mprog" id="mprog"><i class="on"></i><i></i><i></i></div><button type="button" class="mclose" id="mclose" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
 
             <div class="mstep on" data-step="0">
-              <h3>What kind of work do you want to get your hands on?<span class="pin" data-n="8">8</span></h3>
+              <h3>What kind of work do you want to get your hands on?</h3>
               <p class="sub">Pick up to three. We pull projects from these fields.</p>
               <div class="opts" data-q="focus" data-max="3"></div>
             </div>
             <div class="mstep" data-step="1">
+              <h3>Got it. What do you want to walk away with?</h3>
+              <p class="sub">Pick up to three. This decides which projects we surface first.</p>
+              <div class="opts" data-q="goal" data-max="3"></div>
+            </div>
+            <div class="mstep" data-step="2">
               <h3>Last one. Where are you right now?</h3>
               <p class="sub">One pick. We match the level of the project, not just the topic.</p>
               <div class="opts single" data-q="stage" data-max="1"></div>
             </div>
-            <div class="mstep" data-step="2">
+            <div class="mstep" data-step="3">
               <h3 id="rtitle">Here’s where we’d start you.</h3>
               <div class="mecho" id="mecho"></div>
               <div class="mres" id="mres"></div>
               <p class="sub small">Remote, part-time, open now. Free account, no card, your pick is already selected when you land.</p>
             </div>
-            <div class="mstep" data-step="3">
+            <div class="mstep" data-step="4">
               <h3>Create a free account to open it.</h3>
               <div class="pickline"><img id="plogo" alt=""><div><b id="ptitle"></b><span id="pmeta"></span></div><button type="button" class="lnk" id="pchange">Change</button></div>
               <div class="su">
@@ -601,7 +603,7 @@ body.pins .pin{display:flex}
                 <div class="or"><span>or</span></div>
                 <label class="field"><span>Email</span><input type="email" placeholder="you@school.edu" autocomplete="email"></label>
                 <a class="btn primary" id="ebtn" href="https://app.extern.com/sign-up">Continue with email</a>
-                <p class="terms">$0 to start, no card. We’ll ask how you heard about Extern once you’re in, not before.<span class="pin" data-n="4">4</span></p>
+                <p class="terms">$0 to start, no card. We’ll ask how you heard about Extern once you’re in, not before.<span class="pin" data-n="3">3</span></p>
               </div>
             </div>
 
@@ -875,26 +877,24 @@ body.pins .pin{display:flex}
 </footer>
 
 <div class="sticky" id="sticky">
-  <div class="t"><b>Find your externship</b>2 questions, about a minute</div>
+  <div class="t"><b>Find your externship</b>3 questions, then your three picks</div>
   <button type="button" class="btn primary" data-open-matcher data-cta="sticky">Find my externship</button>
-  <span class="pin" data-n="3">3</span>
+  <span class="pin" data-n="2">2</span>
 </div>
 
-<button type="button" class="chgbtn" id="chgbtn" aria-expanded="false">What changed <b>10</b></button>
+<button type="button" class="chgbtn" id="chgbtn" aria-expanded="false">What changed <b>7</b></button>
 <aside class="chg" id="chg" hidden>
   <div class="chgh"><b>Matcher v2 vs today’s matcher arm</b><button type="button" id="chgx" aria-label="Close">×</button></div>
   <ol>
     <li><b>Matcher in the hero.</b> The first question sits where the quiz sits on Dishita’s arm, above the fold. The hero photo and the separate dark matcher section are gone.</li>
-    <li><b>“Find my externship” starts the matcher in place.</b> Desktop: highlights the card and focuses the first option. Phone: opens it full screen.</li>
     <li><b>The sticky bar opens the matcher</b> instead of linking to app sign-up (phone only).</li>
     <li><b>“How did you hear about us” is out of sign-up.</b> Asked on the platform after the account exists.</li>
     <li><b>One primary CTA on results.</b> The top pick is featured with “Start with [company] · $0”. The other two are “Open this one instead” links.</li>
     <li><b>“Open all three”</b> under the cards. Sign up without choosing, top pick carried as the default.</li>
-    <li><b>Progress and time cue:</b> “Question 1 of 2 · about a minute”.</li>
-    <li><b>Two questions, not three.</b> “What do you want to walk away with?” is dropped.</li>
     <li><b>Phone results stack vertically,</b> top pick first. No swipe rail.</li>
     <li><b>Not visible here:</b> fix the Canva and Pinterest catalog fallback, check the LinkedIn, Instagram and TikTok in-app browsers, add per-question tracking.</li>
   </ol>
+  <p><b>Oct 15 review:</b> the hero “Find my externship” button is gone, all three questions stay and the counter reads “1 of 3” like today.</p>
   <label class="chgpins"><input type="checkbox" id="pins"> Show numbered pins on the page</label>
   <p>Today’s version for comparison: <a href="index.html">index.html</a>. Buttons on the sign-up step link to the real sign-up page with the picks attached.</p>
 </aside>
@@ -962,6 +962,7 @@ body.pins .pin{display:flex}
   ];
   var Q={
     focus:['AI & Technology','Strategy & Consulting','Finance','Data Analytics & Visualization','Marketing & Sales','Product Management & Design','Creative Arts & Media'],
+    goal:['Real work I can talk about in interviews','Recognizable company names on my resume','One specific skill, practiced for real','A first look at a new field','A professional certificate','Structured feedback on my work'],
     stage:['Little work experience so far','Some experience, but my career hasn’t really started','Started my career, thinking about a change','Established, coming back after a break','Firmly established in my career']
   };
   var CODE={'AI & Technology':'ai','Strategy & Consulting':'consulting','Finance':'finance','Data Analytics & Visualization':'data','Marketing & Sales':'marketing','Product Management & Design':'product','Creative Arts & Media':'creative',
@@ -971,7 +972,7 @@ body.pins .pin{display:flex}
   // The visitor's own attribution, forwarded as-is: standard utm_* plus the ad click ids the app already allowlists.
   var ATTR=/^(utm_[a-z_]+|gclid|gclsrc|gbraid|wbraid|dclid|fbclid|ttclid|msclkid|li_fat_id|twclid|epik)$/i;
   function attribution(){var out=[];try{new URLSearchParams(location.search).forEach(function(v,k){if(ATTR.test(k)&&v)out.push(encodeURIComponent(k)+'='+encodeURIComponent(v))})}catch(e){}return out.length?out.join('&')+'&':''}
-  var ans={focus:[],stage:[]},step=0,ORDER=['focus','stage'],scored=[];
+  var ans={focus:[],goal:[],stage:[]},step=0,ORDER=['focus','goal','stage'],scored=[];
   var steps=[].slice.call(document.querySelectorAll('.mstep')),prog=[].slice.call(document.querySelectorAll('#mprog i')),mcount=document.getElementById('mcount'),mnext=document.getElementById('mnext'),mback=document.getElementById('mback'),mcue=document.getElementById('mcue'),mcard=document.getElementById('mcard');
   var CHECK='<i><svg viewBox="0 0 24 24" fill="none" stroke="#0f1a20" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>';
   document.querySelectorAll('.opts').forEach(function(box){
@@ -1001,24 +1002,24 @@ body.pins .pin{display:flex}
     prog.forEach(function(p,k){p.classList.toggle('done',k<i);p.classList.toggle('on',k===i)});
     mback.hidden=i===0;
     var r=document.querySelector('.mfoot .right .restart'); if(r)r.remove();
-    if(i<2){mcount.textContent='Question '+(i+1)+' of 2 · about a minute';mnext.hidden=false;mcue.hidden=false;mnext.firstChild.textContent=i===1?'Show my externships ':'Continue ';cue();}
-    else if(i===2){mcount.textContent='Your three externships';mnext.hidden=true;mcue.hidden=true;results();}
+    if(i<3){mcount.textContent=(i+1)+' of 3';mnext.hidden=false;mcue.hidden=false;mnext.firstChild.textContent=i===2?'Show my externships ':'Continue ';cue();}
+    else if(i===3){mcount.textContent='Your three externships';mnext.hidden=true;mcue.hidden=true;results();}
     else{mcount.textContent='Almost there · no card needed';mnext.hidden=true;mcue.hidden=true;}
     if(document.body.classList.contains('sheet'))mcard.scrollTop=0;
     else if(mcard.getBoundingClientRect().top<0)mcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
   }
   function results(){
-    var stageIdx=Q.stage.indexOf(ans.stage[0]);
-    scored=PROG.map(function(p,i){var f=p.focus.filter(function(x){return ans.focus.indexOf(x)>-1}).length;return {p:p,sc:f*3+(p.adv?(stageIdx>=2?1:-1):0),i:i}}).sort(function(a,b){return b.sc-a.sc||a.i-b.i}).slice(0,3);
-    document.getElementById('mecho').innerHTML='Based on '+ans.focus.map(function(a){return '<span>'+a+'</span>'}).join('')+' at your level';
+    var stageIdx=Q.stage.indexOf(ans.stage[0]),goalIdx=ans.goal.map(function(g){return Q.goal.indexOf(g)});
+    scored=PROG.map(function(p,i){var f=p.focus.filter(function(x){return ans.focus.indexOf(x)>-1}).length;var g=p.gives.filter(function(x){return goalIdx.indexOf(x)>-1}).length;return {p:p,sc:f*3+g+(p.adv?(stageIdx>=2?1:-1):0),i:i}}).sort(function(a,b){return b.sc-a.sc||a.i-b.i}).slice(0,3);
+    document.getElementById('mecho').innerHTML='Based on '+ans.focus.map(function(a){return '<span>'+a+'</span>'}).join('')+' and wanting '+ans.goal.map(function(a){return '<span>'+a.charAt(0).toLowerCase()+a.slice(1)+'</span>'}).join('');
     var top=scored[0],m=top.p.focus.filter(function(f){return ans.focus.indexOf(f)>-1});
-    var html='<span class="pin l" data-n="9">9</span><div class="rfeat"><span class="pick">Top pick</span><img src="'+top.p.logo+'" alt="'+top.p.co+'"><h4>'+top.p.title+'</h4><div class="meta">'+top.p.co+' · '+top.p.weeks+' · Remote</div><p class="why">'+(m.length?'<b>Matches '+m.join(' and ')+'.</b> ':'')+top.p.why+'</p><button type="button" class="btn primary" data-pick="'+top.p.slug+'" data-cta="match-'+top.p.slug+'">Start with '+top.p.co+' · $0</button><span class="pin" data-n="5">5</span></div>';
+    var html='<span class="pin l" data-n="6">6</span><div class="rfeat"><span class="pick">Top pick</span><img src="'+top.p.logo+'" alt="'+top.p.co+'"><h4>'+top.p.title+'</h4><div class="meta">'+top.p.co+' · '+top.p.weeks+' · Remote</div><p class="why">'+(m.length?'<b>Matches '+m.join(' and ')+'.</b> ':'')+top.p.why+'</p><button type="button" class="btn primary" data-pick="'+top.p.slug+'" data-cta="match-'+top.p.slug+'">Start with '+top.p.co+' · $0</button><span class="pin" data-n="4">4</span></div>';
     html+='<div class="ralts">'+scored.slice(1).map(function(x){return '<div class="ralt"><img src="'+x.p.logo+'" alt=""><div class="rt"><h5>'+x.p.title+'</h5><span class="meta">'+x.p.co+' · '+x.p.weeks+' · Remote</span></div><button type="button" class="lnk" data-pick="'+x.p.slug+'" data-cta="match-'+x.p.slug+'">Open this one instead</button></div>'}).join('')+'</div>';
-    html+='<button type="button" class="btn ghost rall" data-pick="all" data-cta="match-all">Open all three<span class="pin" data-n="6">6</span></button>';
+    html+='<button type="button" class="btn ghost rall" data-pick="all" data-cta="match-all">Open all three<span class="pin" data-n="5">5</span></button>';
     var mres=document.getElementById('mres'); mres.innerHTML=html;
     [].slice.call(mres.querySelectorAll('[data-pick]')).forEach(function(b){b.addEventListener('click',function(){openSignUp(b.dataset.pick)})});
     var restart=document.createElement('button');restart.type='button';restart.className='back restart';restart.textContent='Start over';
-    restart.addEventListener('click',function(){ans={focus:[],stage:[]};document.querySelectorAll('.opts button').forEach(function(b){b.classList.remove('on');b.disabled=false;b.setAttribute('aria-pressed','false')});go(0);});
+    restart.addEventListener('click',function(){ans={focus:[],goal:[],stage:[]};document.querySelectorAll('.opts button').forEach(function(b){b.classList.remove('on');b.disabled=false;b.setAttribute('aria-pressed','false')});go(0);});
     document.querySelector('.mfoot .right').appendChild(restart);
   }
   // A pick opens the sign-up step in place. "all" keeps the top pick as the default the platform pre-selects.
@@ -1028,17 +1029,17 @@ body.pins .pin{display:flex}
     document.getElementById('ptitle').textContent=all?'All three, starting with '+x.p.co:x.p.title;
     document.getElementById('pmeta').textContent=all?scored.map(function(s){return s.p.co}).join(' · '):x.p.co+' · '+x.p.weeks+' · Remote';
     var picks=scored.map(function(s){return s.p.slug}).join(',');
-    var params='?'+attribution()+'handoff=homepage_match&focus='+codes(ans.focus)+'&stage='+codes(ans.stage)+'&picks='+picks+'&program='+x.p.slug;
+    var params='?'+attribution()+'handoff=homepage_match&focus='+codes(ans.focus)+'&goal='+codes(ans.goal)+'&stage='+codes(ans.stage)+'&picks='+picks+'&program='+x.p.slug;
     document.getElementById('gbtn').href='https://app.extern.com/sign-up'+params;
     document.getElementById('ebtn').href='https://app.extern.com/sign-up'+params;
-    go(3);
+    go(4);
   }
-  document.getElementById('pchange').addEventListener('click',function(){go(2)});
+  document.getElementById('pchange').addEventListener('click',function(){go(3)});
   mnext.addEventListener('click',function(){if(mnext.disabled)return;go(step+1)});
   mback.addEventListener('click',function(){go(step-1)});
   cue();
 
-  // "Find my externship" starts the matcher in place: desktop highlights the card and focuses the first option, phone opens it full screen
+  // The sticky bar and the phone starter open the matcher in place: desktop highlights the card and focuses the first option, phone opens it full screen
   var phone=window.matchMedia('(max-width:860px)');
   function openMatcher(){
     if(phone.matches){document.body.classList.add('sheet');mcard.scrollTop=0;}
@@ -1050,14 +1051,15 @@ body.pins .pin{display:flex}
   if(phone.addEventListener)phone.addEventListener('change',function(){if(!phone.matches)document.body.classList.remove('sheet')});
   if(location.hash==='#match'&&phone.matches){history.replaceState(null,'',location.pathname+location.search);window.scrollTo(0,0);openMatcher();}
 
-  // review aid: ?state=results or ?state=signup jumps to that step with sample answers; ?pins=1 shows the pins
+  // review aid: ?state=goal, ?state=results or ?state=signup jumps to that step with sample answers; ?pins=1 shows the pins
   var qs=new URLSearchParams(location.search),st=qs.get('state');
   if(st==='results'||st==='signup'){
-    ans.focus=['Data Analytics & Visualization','Marketing & Sales'];ans.stage=[Q.stage[1]];
-    document.querySelectorAll('.opts button').forEach(function(b){var l=b.querySelector('span').textContent;if(ans.focus.indexOf(l)>-1||ans.stage.indexOf(l)>-1){b.classList.add('on');b.setAttribute('aria-pressed','true')}});
-    go(2); if(st==='signup')openSignUp(scored[0].p.slug);
+    ans.focus=['Data Analytics & Visualization','Marketing & Sales'];ans.goal=[Q.goal[0],Q.goal[1]];ans.stage=[Q.stage[1]];
+    document.querySelectorAll('.opts button').forEach(function(b){var l=b.querySelector('span').textContent;if(ans.focus.indexOf(l)>-1||ans.goal.indexOf(l)>-1||ans.stage.indexOf(l)>-1){b.classList.add('on');b.setAttribute('aria-pressed','true')}});
+    go(3); if(st==='signup')openSignUp(scored[0].p.slug);
     if(phone.matches)document.body.classList.add('sheet');
   }
+  if(st==='goal'){ans.focus=['Data Analytics & Visualization','Marketing & Sales'];document.querySelectorAll('.opts button').forEach(function(b){if(ans.focus.indexOf(b.querySelector('span').textContent)>-1){b.classList.add('on');b.setAttribute('aria-pressed','true')}});go(1);if(phone.matches)document.body.classList.add('sheet');}
   if(qs.get('pins')==='1'){document.body.classList.add('pins');document.getElementById('pins').checked=true;}
   // review aid: what-changed panel and numbered pins
   var chg=document.getElementById('chg'),chgbtn=document.getElementById('chgbtn');
