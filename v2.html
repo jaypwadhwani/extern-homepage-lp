@@ -410,7 +410,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
 .heroCopy .row{position:relative}
 .heroArt,.bigline,.cap{display:none}
 .heroMatch{grid-column:2;grid-row:1;position:relative;z-index:2}
-.mstart{display:none}
 .hcard{background:var(--cream);color:var(--ink);border-radius:28px;box-shadow:0 60px 120px -60px rgba(0,0,0,.6);display:flex;flex-direction:column;min-height:420px;overflow:hidden;text-align:left}
 .hcard .mmain{padding:24px 30px 22px;gap:16px;flex:1}
 .hcard .mtop{font-size:13.5px;position:relative;flex-wrap:wrap}
@@ -424,8 +423,6 @@ footer .bot a{color:rgba(255,255,255,.75);margin-left:18px}
 .hcard .opts.single button{min-height:46px;padding:11px 16px;max-width:none;border-radius:16px}
 .hcard .mfoot{padding-top:12px}
 .hcard .btn.next{height:48px;padding:0 22px}
-.mclose{display:none;background:transparent;border:0;color:var(--muted);width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;margin-left:auto}
-.mclose:hover{background:var(--cream2);color:var(--ink)}
 .hcard.flash{animation:flash 1s ease-out}
 @keyframes flash{0%{box-shadow:0 0 0 0 rgba(24,221,76,0)}25%{box-shadow:0 0 0 7px rgba(24,221,76,.6)}100%{box-shadow:0 60px 120px -60px rgba(0,0,0,.6)}}
 /* results */
@@ -485,17 +482,8 @@ body.pins .pin{display:flex}
   .heroGrid{grid-template-columns:1fr;padding:12px 0 28px;gap:18px}
   .heroCopy{grid-row:1}
   .heroMatch{grid-column:1;grid-row:2}
-  .mstart{display:flex;flex-direction:column;gap:10px;width:100%;text-align:left;background:var(--cream);color:var(--ink);border:0;border-radius:22px;padding:18px 18px 16px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);font:inherit}
-  .mstart .who{display:flex;gap:8px;align-items:center;font-size:12.5px;font-weight:600;color:var(--muted)}
-  .mstart .who img{width:24px;height:24px;border-radius:50%;background:#fff;border:1px solid var(--line);padding:4px}
-  .mstart b{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:30px;line-height:1.05;letter-spacing:-.015em}
-  .mstart > span:not(.who):not(.btn){font-size:14.5px;color:var(--ink2);line-height:1.45}
-  .mstart .btn{width:100%;height:50px;margin-top:4px}
-  .hcard{display:none}
-  body.sheet{overflow:hidden}
-  body.sheet .hcard{display:flex;position:fixed;inset:0;z-index:90;border-radius:0;min-height:0;box-shadow:none;overflow:auto;background:var(--cream)}
-  body.sheet .hcard .mmain{padding:14px 18px calc(20px + env(safe-area-inset-bottom));min-height:100%}
-  .mclose{display:inline-flex}
+  .hcard{border-radius:22px;min-height:0;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+  .mmain{padding:22px 18px 20px;gap:22px}
   .hcard .mstep h3{font-size:clamp(26px,7.6vw,32px)}
   .hcard .opts button{height:46px;font-size:14.5px}
   .rfeat h4{padding-right:64px}
@@ -503,11 +491,9 @@ body.pins .pin{display:flex}
   .ralt img{grid-row:1/3}
   .ralt h5{white-space:normal}
   .ralt .lnk{grid-column:2;justify-self:start;padding:2px 0 0}
-  .mstart{position:relative;z-index:1}
   .chgbtn{bottom:auto;top:12px;right:12px;height:36px;font-size:12.5px;padding:0 12px}
   .chg{top:56px;bottom:auto;right:12px;left:auto}
   .chgbtn{left:auto}
-  body.sheet .chgbtn,body.sheet .chg{display:none}
 }
 </style>
 </head>
@@ -564,15 +550,9 @@ body.pins .pin{display:flex}
 
       <div class="heroMatch" id="match">
         <span class="pin" data-n="1">1</span>
-        <button type="button" class="mstart" data-open-matcher data-cta="hero-start">
-          <span class="who"><img src="assets/extern_mark.svg" alt="">Extern</span>
-          <b>Find your externship</b>
-          <span>Three quick questions. See your three picks before you make an account.</span>
-          <span class="btn primary">Start</span>
-        </button>
-        <div class="hcard" id="mcard" role="region" aria-label="Find your externship">
+        <div class="hcard" id="mcard" role="region" aria-label="Which externships fit you">
           <div class="mmain">
-            <div class="mtop"><span id="mcount">1 of 3</span><div class="mprog" id="mprog"><i class="on"></i><i></i><i></i></div><button type="button" class="mclose" id="mclose" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+            <div class="mtop"><span id="mcount">1 of 3</span><div class="mprog" id="mprog"><i class="on"></i><i></i><i></i></div></div>
 
             <div class="mstep on" data-step="0">
               <h3>What kind of work do you want to get your hands on?</h3>
@@ -877,8 +857,8 @@ body.pins .pin{display:flex}
 </footer>
 
 <div class="sticky" id="sticky">
-  <div class="t"><b>Find your externship</b>3 questions, then your three picks</div>
-  <button type="button" class="btn primary" data-open-matcher data-cta="sticky">Find my externship</button>
+  <div class="t"><b>See which externships fit you</b>3 questions, then your three picks</div>
+  <button type="button" class="btn primary" data-open-matcher data-cta="sticky">Start</button>
   <span class="pin" data-n="2">2</span>
 </div>
 
@@ -886,15 +866,15 @@ body.pins .pin{display:flex}
 <aside class="chg" id="chg" hidden>
   <div class="chgh"><b>Matcher v2 vs today’s matcher arm</b><button type="button" id="chgx" aria-label="Close">×</button></div>
   <ol>
-    <li><b>Matcher in the hero.</b> The first question sits where the quiz sits on Dishita’s arm, above the fold. The hero photo and the separate dark matcher section are gone.</li>
-    <li><b>The sticky bar opens the matcher</b> instead of linking to app sign-up (phone only).</li>
+    <li><b>Matcher in the hero.</b> The first question sits where the quiz sits on Dishita’s arm, above the fold, on desktop and phone. The hero photo, the separate dark matcher section and every “Find my externship” button are gone.</li>
+    <li><b>The sticky bar scrolls back to the matcher</b> instead of linking to app sign-up (phone only, appears once the card is off screen).</li>
     <li><b>“How did you hear about us” is out of sign-up.</b> Asked on the platform after the account exists.</li>
     <li><b>One primary CTA on results.</b> The top pick is featured with “Start with [company] · $0”. The other two are “Open this one instead” links.</li>
     <li><b>“Open all three”</b> under the cards. Sign up without choosing, top pick carried as the default.</li>
     <li><b>Phone results stack vertically,</b> top pick first. No swipe rail.</li>
     <li><b>Not visible here:</b> fix the Canva and Pinterest catalog fallback, check the LinkedIn, Instagram and TikTok in-app browsers, add per-question tracking.</li>
   </ol>
-  <p><b>Oct 15 review:</b> the hero “Find my externship” button is gone, all three questions stay and the counter reads “1 of 3” like today.</p>
+  <p><b>Oct 15 review:</b> no “Find my externship” button anywhere, the card itself is on the page on phone too, all three questions stay and the counter reads “1 of 3” like today.</p>
   <label class="chgpins"><input type="checkbox" id="pins"> Show numbered pins on the page</label>
   <p>Today’s version for comparison: <a href="index.html">index.html</a>. Buttons on the sign-up step link to the real sign-up page with the picks attached.</p>
 </aside>
@@ -1005,8 +985,7 @@ body.pins .pin{display:flex}
     if(i<3){mcount.textContent=(i+1)+' of 3';mnext.hidden=false;mcue.hidden=false;mnext.firstChild.textContent=i===2?'Show my externships ':'Continue ';cue();}
     else if(i===3){mcount.textContent='Your three externships';mnext.hidden=true;mcue.hidden=true;results();}
     else{mcount.textContent='Almost there · no card needed';mnext.hidden=true;mcue.hidden=true;}
-    if(document.body.classList.contains('sheet'))mcard.scrollTop=0;
-    else if(mcard.getBoundingClientRect().top<0)mcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    if(mcard.getBoundingClientRect().top<0)mcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
   }
   function results(){
     var stageIdx=Q.stage.indexOf(ans.stage[0]),goalIdx=ans.goal.map(function(g){return Q.goal.indexOf(g)});
@@ -1039,17 +1018,11 @@ body.pins .pin{display:flex}
   mback.addEventListener('click',function(){go(step-1)});
   cue();
 
-  // The sticky bar and the phone starter open the matcher in place: desktop highlights the card and focuses the first option, phone opens it full screen
-  var phone=window.matchMedia('(max-width:860px)');
+  // The sticky bar (phone) scrolls back to the matcher card, highlights it and focuses the first option
   function openMatcher(){
-    if(phone.matches){document.body.classList.add('sheet');mcard.scrollTop=0;}
-    else{mcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});mcard.classList.remove('flash');void mcard.offsetWidth;mcard.classList.add('flash');var f=mcard.querySelector('.mstep.on .opts button');if(f)f.focus({preventScroll:true});}
+    mcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});mcard.classList.remove('flash');void mcard.offsetWidth;mcard.classList.add('flash');var f=mcard.querySelector('.mstep.on .opts button');if(f)f.focus({preventScroll:true});
   }
   [].slice.call(document.querySelectorAll('[data-open-matcher]')).forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();openMatcher()})});
-  document.getElementById('mclose').addEventListener('click',function(){document.body.classList.remove('sheet')});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')document.body.classList.remove('sheet')});
-  if(phone.addEventListener)phone.addEventListener('change',function(){if(!phone.matches)document.body.classList.remove('sheet')});
-  if(location.hash==='#match'&&phone.matches){history.replaceState(null,'',location.pathname+location.search);window.scrollTo(0,0);openMatcher();}
 
   // review aid: ?state=goal, ?state=results or ?state=signup jumps to that step with sample answers; ?pins=1 shows the pins
   var qs=new URLSearchParams(location.search),st=qs.get('state');
@@ -1057,9 +1030,8 @@ body.pins .pin{display:flex}
     ans.focus=['Data Analytics & Visualization','Marketing & Sales'];ans.goal=[Q.goal[0],Q.goal[1]];ans.stage=[Q.stage[1]];
     document.querySelectorAll('.opts button').forEach(function(b){var l=b.querySelector('span').textContent;if(ans.focus.indexOf(l)>-1||ans.goal.indexOf(l)>-1||ans.stage.indexOf(l)>-1){b.classList.add('on');b.setAttribute('aria-pressed','true')}});
     go(3); if(st==='signup')openSignUp(scored[0].p.slug);
-    if(phone.matches)document.body.classList.add('sheet');
   }
-  if(st==='goal'){ans.focus=['Data Analytics & Visualization','Marketing & Sales'];document.querySelectorAll('.opts button').forEach(function(b){if(ans.focus.indexOf(b.querySelector('span').textContent)>-1){b.classList.add('on');b.setAttribute('aria-pressed','true')}});go(1);if(phone.matches)document.body.classList.add('sheet');}
+  if(st==='goal'){ans.focus=['Data Analytics & Visualization','Marketing & Sales'];document.querySelectorAll('.opts button').forEach(function(b){if(ans.focus.indexOf(b.querySelector('span').textContent)>-1){b.classList.add('on');b.setAttribute('aria-pressed','true')}});go(1);}
   if(qs.get('pins')==='1'){document.body.classList.add('pins');document.getElementById('pins').checked=true;}
   // review aid: what-changed panel and numbered pins
   var chg=document.getElementById('chg'),chgbtn=document.getElementById('chgbtn');
