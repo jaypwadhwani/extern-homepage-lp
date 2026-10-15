@@ -974,13 +974,13 @@ body.pins .pin{display:flex}
         [].slice.call(box.children).forEach(function(x){x.disabled=max>1&&ans[q].length>=max&&!x.classList.contains('on')});
         cue();
         // a single-pick answer moves on by itself; a multi-pick question moves on once the third pick lands, Continue covers one or two picks
-        if(max===1||ans[q].length>=max)autoNext();
+        if(max===1||ans[q].length>=max)autoNext(max);
       });
       box.appendChild(b);
     });
   });
   var autoT=null;
-  function autoNext(){var at=step;clearTimeout(autoT);autoT=setTimeout(function(){if(step===at&&!mnext.disabled)go(at+1)},reduce?0:380)}
+  function autoNext(max){var at=step;clearTimeout(autoT);autoT=setTimeout(function(){if(step===at&&!mnext.disabled)go(at+1)},reduce?0:(max===1?1000:380))}
   function cue(){
     var q=ORDER[step]; if(!q)return;
     var n=ans[q].length,max=+document.querySelector('.opts[data-q="'+q+'"]').dataset.max;
